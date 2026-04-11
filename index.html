@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Branflakes — Fuel Your Stack.</title>
+  <title>Branflakes — The Foundation of Every Great Project.</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -67,12 +67,12 @@
     }
     .product-float { animation: floatBox 7s ease-in-out infinite; }
 
-    /* ── Marquee ─────────────────────────────────────── */
+    /* ── Marquee — sped up from 38s → 28s ───────────── */
     @keyframes marquee {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
     }
-    .marquee-track { animation: marquee 38s linear infinite; white-space: nowrap; display: flex; align-items: center; }
+    .marquee-track { animation: marquee 28s linear infinite; white-space: nowrap; display: flex; align-items: center; }
 
     /* ── Header glassmorphism ────────────────────────── */
     .header-blur {
@@ -117,9 +117,20 @@
   ════════════════════════════════════════ -->
   <header class="fixed top-0 left-0 right-0 z-50 header-blur border-b border-black/[0.06]">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 h-[60px] flex items-center justify-between">
-      <!-- Logo -->
+      <!-- Logo mark + wordmark (SVG, no image dependency) -->
       <a href="index.html" class="flex items-center gap-2.5 shrink-0">
-        <img src="brand_assets/Branflakes%20logo.png" alt="Branflakes" class="h-[34px] w-auto" />
+        <svg width="28" height="28" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="16,1 21.5,9 16,12.5 10.5,9"       fill="#0A84FF"/>
+          <polygon points="31,16 23,11.5 19.5,16 23,20.5"    fill="#0A84FF"/>
+          <polygon points="16,31 10.5,23 16,19.5 21.5,23"    fill="#0A84FF"/>
+          <polygon points="1,16 9,11.5 12.5,16 9,20.5"       fill="#0A84FF"/>
+          <polygon points="21.5,9 23,11.5 19.5,16 16,12.5"   fill="#FF9500"/>
+          <polygon points="23,20.5 21.5,23 16,19.5 19.5,16"  fill="#FF9500"/>
+          <polygon points="10.5,23 9,20.5 12.5,16 16,19.5"   fill="#FF9500"/>
+          <polygon points="9,11.5 10.5,9 16,12.5 12.5,16"    fill="#FF9500"/>
+          <polygon points="12.5,16 16,12.5 19.5,16 16,19.5"  fill="#0A84FF"/>
+        </svg>
+        <span class="font-display font-black text-[15px] tracking-[-0.02em] text-sys-dark">BRAN<span class="text-sys-blue">FLAKES</span></span>
       </a>
       <!-- Nav -->
       <nav class="flex items-center gap-7">
@@ -127,7 +138,7 @@
           About Us
         </a>
         <a href="#" class="font-display font-semibold text-[13px] bg-sys-blue text-white px-5 py-2.5 rounded-full hover:bg-[#0070E0] transition-colors duration-150 hover:shadow-[0_4px_18px_rgba(10,132,255,0.32)] active:scale-[0.97]">
-          Start Free Bowl
+          Get Started
         </a>
       </nav>
     </div>
@@ -137,35 +148,33 @@
        HERO
   ════════════════════════════════════════ -->
   <section class="min-h-screen flex items-center pt-[60px] px-6 lg:px-12 relative overflow-hidden hero-glow">
-    <!-- Dot grid top-right accent -->
     <div class="dot-grid absolute top-0 right-0 w-72 h-72 opacity-60 pointer-events-none"></div>
-    <!-- Dot grid bottom-left accent -->
     <div class="dot-grid absolute bottom-0 left-0 w-48 h-48 opacity-40 pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-20 lg:py-0">
       <!-- Left: Copy -->
       <div>
         <p class="afu d1 font-display font-semibold text-[11px] tracking-[0.2em] text-sys-blue uppercase mb-7">
-          High-Performance Cereal Infrastructure
+          For Creative Architects
         </p>
-        <h1 class="afu d2 font-display font-black leading-[0.9] tracking-[-0.04em] text-sys-dark mb-8"
-            style="font-size: clamp(4.5rem, 9.5vw, 8.5rem);">
-          Fuel<br />Your<br /><span class="text-sys-blue">Stack</span><span class="text-sys-amber">.</span>
+        <!-- 2-line headline: font sized so "The Foundation" fits on one line at all viewports -->
+        <h1 class="afu d2 font-display font-black leading-[0.92] tracking-[-0.04em] text-sys-dark mb-8"
+            style="font-size: clamp(2.4rem, 4.5vw, 4.5rem);">
+          The Foundation<br />of Everything<span class="text-sys-amber">.</span>
         </h1>
         <p class="afu d3 font-body text-[17px] text-sys-muted leading-[1.72] max-w-[420px] mb-11">
-          The first cereal engineered for developer productivity. Ship faster. Crunch harder. Optimize every morning standup.
+          A high-performance breakfast cereal for designers, agency owners, and high-end creators. Build your morning with intention. Scale your day without compromise.
         </p>
         <div class="afu d4 flex flex-wrap items-center gap-4">
           <a href="#" class="font-display font-bold text-[15px] bg-sys-dark text-white px-8 py-4 rounded-full hover:bg-[#2C2C2E] transition-colors duration-150 hover:shadow-[0_8px_28px_rgba(28,28,30,0.22)] active:scale-[0.97]">
-            Start Your Free Bowl
+            Explore the Framework
           </a>
           <a href="#stats" class="font-display font-semibold text-[15px] text-sys-dark/50 hover:text-sys-dark transition-colors duration-150 flex items-center gap-1.5">
-            View metrics <span class="text-sys-amber font-bold">↓</span>
+            View principles <span class="text-sys-amber font-bold">↓</span>
           </a>
         </div>
-        <!-- Trust indicator -->
         <p class="afu d5 font-body text-xs text-sys-muted mt-8">
-          Trusted by <span class="text-sys-dark font-semibold">10,000+</span> engineers &nbsp;·&nbsp; SOC2 Compliant &nbsp;·&nbsp; No Legacy Grains
+          Trusted by <span class="text-sys-dark font-semibold">2,000+</span> Creative Studios &nbsp;·&nbsp; Zero Compromise &nbsp;·&nbsp; Precision Engineered
         </p>
       </div>
 
@@ -173,12 +182,11 @@
       <div class="afu d5 flex items-center justify-center lg:justify-end">
         <div class="product-float relative">
           <div class="absolute inset-0 rounded-3xl blur-3xl bg-sys-blue/10 scale-90 translate-y-8 pointer-events-none"></div>
-          <img src="brand_assets/Branflakes%20box%20concept.png" alt="Branflakes Box" class="relative w-[340px] lg:w-[420px] h-auto drop-shadow-[0_32px_64px_rgba(10,132,255,0.15)]" />
+          <img src="brand_assets/Branflakes%20box%20concept.png" alt="Branflakes" class="relative w-[340px] lg:w-[420px] h-auto drop-shadow-[0_32px_64px_rgba(10,132,255,0.15)]" />
         </div>
       </div>
     </div>
 
-    <!-- Section divider gradient -->
     <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sys-amber/30 to-transparent"></div>
   </section>
 
@@ -188,57 +196,56 @@
   <section id="stats" class="py-28 px-6 lg:px-12 border-t border-black/[0.06]">
     <div class="max-w-7xl mx-auto">
       <p class="font-display font-semibold text-[11px] tracking-[0.2em] text-sys-muted uppercase mb-14">
-        By The Numbers
+        Nutrition &amp; Performance Facts
       </p>
-      <!-- Hairline grid: bg-black/8 parent, bg-surface children create the lines -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-black/[0.07]">
 
-        <div class="stat-card bg-sys-surface p-9 lg:p-10">
-          <p class="font-display font-black text-[3.2rem] leading-none tracking-tight text-sys-dark mb-3">99.99%</p>
-          <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Crunch Uptime</p>
-          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Maximum bowel-throughput. Zero unplanned breakfast downtime.</p>
+        <div class="stat-card bg-sys-surface p-7 lg:p-10">
+          <p class="font-display font-black leading-none tracking-tight text-sys-dark mb-3" style="font-size: clamp(1.9rem, 5vw, 3.2rem);">100%</p>
+          <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Whole Grain</p>
+          <p class="font-body text-[13px] text-sys-muted leading-relaxed">No fillers. No shortcuts. Just clean, deliberate fuel for the work that actually matters.</p>
         </div>
 
-        <div class="stat-card bg-sys-surface p-9 lg:p-10">
-          <p class="font-display font-black text-[3.2rem] leading-none tracking-tight text-sys-amber mb-3">0</p>
-          <p class="font-display font-bold text-[13px] text-sys-dark mb-2">Legacy Grains</p>
-          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Built fresh every batch. No deprecated APIs, no tech debt.</p>
+        <div class="stat-card bg-sys-surface p-7 lg:p-10">
+          <p class="font-display font-black leading-none tracking-tight text-sys-amber mb-3" style="font-size: clamp(1.9rem, 5vw, 3.2rem);">Zero</p>
+          <p class="font-display font-bold text-[13px] text-sys-dark mb-2">Artificial Flavors</p>
+          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Nothing in the bowl that doesn't earn its place. Same rule applies to your work.</p>
         </div>
 
-        <div class="stat-card bg-sys-surface p-9 lg:p-10">
-          <p class="font-display font-black text-[3.2rem] leading-none tracking-tight text-sys-dark mb-3">10g</p>
-          <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Algorithmic Fiber</p>
-          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Optimizes neural pathways for async-first thinking patterns.</p>
+        <div class="stat-card bg-sys-surface p-7 lg:p-10">
+          <p class="font-display font-black leading-none tracking-tight text-sys-dark mb-3" style="font-size: clamp(1.9rem, 5vw, 3.2rem);">12g</p>
+          <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Protein Per Bowl</p>
+          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Enough to carry you through a full creative sprint without hitting a wall at noon.</p>
         </div>
 
-        <div class="stat-card bg-sys-surface p-9 lg:p-10">
-          <p class="font-display font-black text-[3.2rem] leading-none tracking-tight text-sys-amber mb-3">3ms</p>
-          <p class="font-display font-bold text-[13px] text-sys-dark mb-2">Milk Integration</p>
-          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Sub-3ms fluid infusion. Cold-start optimized, warm-bowl ready.</p>
+        <div class="stat-card bg-sys-surface p-7 lg:p-10">
+          <p class="font-display font-black leading-none tracking-tight text-sys-amber mb-3" style="font-size: clamp(1.9rem, 5vw, 3.2rem);">4hrs</p>
+          <p class="font-display font-bold text-[13px] text-sys-dark mb-2">Sustained Focus</p>
+          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Slow-release complex carbs. The kind of energy that doesn't crash mid-presentation.</p>
         </div>
 
-        <div class="stat-card bg-sys-surface p-9 lg:p-10">
-          <p class="font-display font-black text-[3.2rem] leading-none tracking-tight text-sys-dark mb-3">∞</p>
-          <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Concurrent Spoonfuls</p>
-          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Horizontally scalable breakfast. Engineered for distributed teams.</p>
+        <div class="stat-card bg-sys-surface p-7 lg:p-10">
+          <p class="font-display font-black leading-none tracking-tight text-sys-dark mb-3" style="font-size: clamp(1.9rem, 5vw, 3.2rem);">∞</p>
+          <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Bowl Combinations</p>
+          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Oat milk. Almond milk. Cold brew. We don't judge. The crunch holds either way.</p>
         </div>
 
-        <div class="stat-card bg-sys-surface p-9 lg:p-10">
-          <p class="font-display font-black text-[3.2rem] leading-none tracking-tight text-sys-amber mb-3">SOC2</p>
-          <p class="font-display font-bold text-[13px] text-sys-dark mb-2">Compliance Ready</p>
-          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Your breakfast data stays yours. Enterprise-grade nutrition security.</p>
+        <div class="stat-card bg-sys-surface p-7 lg:p-10">
+          <p class="font-display font-black leading-none tracking-tight text-sys-amber mb-3" style="font-size: clamp(1.9rem, 5vw, 3.2rem);">4.9★</p>
+          <p class="font-display font-bold text-[13px] text-sys-dark mb-2">Taste Rating</p>
+          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Reviewed by people who eat for function, not entertainment. They still loved it.</p>
         </div>
 
-        <div class="stat-card bg-sys-surface p-9 lg:p-10">
-          <p class="font-display font-black text-[3.2rem] leading-none tracking-tight text-sys-dark mb-3">4.9★</p>
-          <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Developer NPS</p>
-          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Rated top breakfast choice by engineers on Hacker News. Twice.</p>
+        <div class="stat-card bg-sys-surface p-7 lg:p-10">
+          <p class="font-display font-black leading-none tracking-tight text-sys-dark mb-3" style="font-size: clamp(1.9rem, 5vw, 3.2rem);">1 Bowl</p>
+          <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Morning Ritual</p>
+          <p class="font-body text-[13px] text-sys-muted leading-relaxed">The most consistent habit in your creative practice. Five minutes. Every morning. Non-negotiable.</p>
         </div>
 
-        <div class="stat-card bg-sys-surface p-9 lg:p-10">
-          <p class="font-display font-black text-[3.2rem] leading-none tracking-tight text-sys-amber mb-3">1B+</p>
-          <p class="font-display font-bold text-[13px] text-sys-dark mb-2">Rows Processed</p>
-          <p class="font-body text-[13px] text-sys-muted leading-relaxed">Per morning. Flake-level parallelization at planetary scale.</p>
+        <div class="stat-card bg-sys-surface p-7 lg:p-10">
+          <p class="font-display font-black leading-none tracking-tight text-sys-amber mb-3" style="font-size: clamp(1.9rem, 5vw, 3.2rem);">#1</p>
+          <p class="font-display font-bold text-[13px] text-sys-dark mb-2">Studio Staple</p>
+          <p class="font-body text-[13px] text-sys-muted leading-relaxed">More reorders per creative than any other breakfast. Studios that try it don't switch back.</p>
         </div>
 
       </div>
@@ -249,46 +256,43 @@
        PRESS MARQUEE
   ════════════════════════════════════════ -->
   <section class="py-10 border-t border-b border-white/[0.06] overflow-hidden bg-sys-dark">
-    <!-- Label -->
     <div class="px-6 lg:px-12 max-w-7xl mx-auto mb-5">
       <p class="font-display font-semibold text-[10px] tracking-[0.22em] text-white/25 uppercase">In the Press</p>
     </div>
-    <!-- Ticker -->
     <div class="overflow-hidden relative">
-      <!-- fade edges -->
       <div class="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-sys-dark to-transparent z-10 pointer-events-none"></div>
       <div class="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-sys-dark to-transparent z-10 pointer-events-none"></div>
 
       <div class="marquee-track gap-10 px-6">
         <!-- Set A -->
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">TechCrunch — <em class="not-italic text-sys-amber">"The most disruptive breakfast since the toaster."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Dezeen — <em class="not-italic text-sys-amber">"A cereal with the visual vocabulary of a design studio. Somehow, it works."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Wired — <em class="not-italic text-sys-amber">"Web3 is dead. We are now in the Cereal Web era."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">It's Nice That — <em class="not-italic text-sys-amber">"Ate a bowl. Designed three logos. Coincidence? We're not ruling it out."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">The Verge — <em class="not-italic text-sys-amber">"Finally, a cereal that ships to production."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Wallpaper* — <em class="not-italic text-sys-amber">"The first breakfast we'd actually put on a moodboard."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Forbes — <em class="not-italic text-sys-amber">"Valued at $4.2B pre-Series A. Naturally."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Core77 — <em class="not-italic text-sys-amber">"Industrial aesthetics. Warm oat milk. Unexpected depth."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Y Combinator — <em class="not-italic text-sys-amber">"We funded Branflakes. We regret nothing."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Print Magazine — <em class="not-italic text-sys-amber">"We reviewed the box before we reviewed the cereal. Both are exceptional."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Product Hunt — <em class="not-italic text-sys-amber">"#1 Product of the Day. Every day. Forever."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Eye Magazine — <em class="not-italic text-sys-amber">"A breakfast that takes kerning as seriously as we do."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">MIT Technology Review — <em class="not-italic text-sys-amber">"A nutritional paradigm shift dressed as breakfast."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">AIGA Eye on Design — <em class="not-italic text-sys-amber">"Finally, a cereal worth putting next to your Pantone guide."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <!-- Set B (duplicate for seamless loop) -->
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">TechCrunch — <em class="not-italic text-sys-amber">"The most disruptive breakfast since the toaster."</em></span>
+        <!-- Set B — duplicate for seamless loop -->
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Dezeen — <em class="not-italic text-sys-amber">"A cereal with the visual vocabulary of a design studio. Somehow, it works."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Wired — <em class="not-italic text-sys-amber">"Web3 is dead. We are now in the Cereal Web era."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">It's Nice That — <em class="not-italic text-sys-amber">"Ate a bowl. Designed three logos. Coincidence? We're not ruling it out."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">The Verge — <em class="not-italic text-sys-amber">"Finally, a cereal that ships to production."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Wallpaper* — <em class="not-italic text-sys-amber">"The first breakfast we'd actually put on a moodboard."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Forbes — <em class="not-italic text-sys-amber">"Valued at $4.2B pre-Series A. Naturally."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Core77 — <em class="not-italic text-sys-amber">"Industrial aesthetics. Warm oat milk. Unexpected depth."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Y Combinator — <em class="not-italic text-sys-amber">"We funded Branflakes. We regret nothing."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Print Magazine — <em class="not-italic text-sys-amber">"We reviewed the box before we reviewed the cereal. Both are exceptional."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Product Hunt — <em class="not-italic text-sys-amber">"#1 Product of the Day. Every day. Forever."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">Eye Magazine — <em class="not-italic text-sys-amber">"A breakfast that takes kerning as seriously as we do."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
-        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">MIT Technology Review — <em class="not-italic text-sys-amber">"A nutritional paradigm shift dressed as breakfast."</em></span>
+        <span class="font-display font-semibold text-[13px] text-white/50 shrink-0">AIGA Eye on Design — <em class="not-italic text-sys-amber">"Finally, a cereal worth putting next to your Pantone guide."</em></span>
         <span class="text-sys-amber/30 shrink-0 text-xs">◆</span>
       </div>
     </div>
@@ -299,80 +303,78 @@
   ════════════════════════════════════════ -->
   <section class="py-28 px-6 lg:px-12 border-b border-black/[0.06]">
     <div class="max-w-7xl mx-auto">
-      <!-- Section header -->
       <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-14 gap-4">
         <div>
-          <p class="font-display font-semibold text-[11px] tracking-[0.2em] text-sys-muted uppercase mb-4">Social Proof</p>
+          <p class="font-display font-semibold text-[11px] tracking-[0.2em] text-sys-muted uppercase mb-4">From the Bowl</p>
           <h2 class="font-display font-black text-[clamp(2.8rem,5vw,4.5rem)] leading-[0.93] tracking-[-0.03em] text-sys-dark">
-            What Devs Say
+            What Creators Say
           </h2>
         </div>
         <p class="font-body text-[14px] text-sys-muted leading-relaxed lg:max-w-[260px] lg:text-right">
-          From 10x engineers to aspiring 1x engineers. They all eat Branflakes.
+          Designers, directors, and agency founders on what happens when you start the day right.
         </p>
       </div>
 
-      <!-- Cards grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-black/[0.07]">
 
         <div class="testi-card bg-sys-surface p-8 flex flex-col justify-between gap-8 min-h-[220px]">
           <p class="font-body text-[15px] text-sys-dark leading-[1.7]">
-            "I replaced my morning coffee and my Redis cache with Branflakes. Latency dropped 40%. My team thinks I'm a genius."
+            "I make a bowl every morning before I open my laptop. The ritual matters. I'm sharper on Branflakes days — and I've stopped pretending that's a coincidence."
           </p>
           <div>
-            <p class="font-display font-semibold text-[13px] text-sys-dark">@t_hornikev</p>
-            <p class="font-body text-[12px] text-sys-muted">Staff Engineer, Vercel (probably)</p>
+            <p class="font-display font-semibold text-[13px] text-sys-dark">Marcus T.</p>
+            <p class="font-body text-[12px] text-sys-muted">Creative Director, Global Brand Studio</p>
           </div>
         </div>
 
         <div class="testi-card bg-sys-surface p-8 flex flex-col justify-between gap-8 min-h-[220px]">
           <p class="font-body text-[15px] text-sys-dark leading-[1.7]">
-            "Finally migrated off oatmeal. Zero breaking changes. The TypeScript types for the milk API are <em>chef's kiss</em>. Ship it."
+            "It doesn't taste like 'healthy.' It tastes like something you'd actually choose. The crunch is real, it holds in milk, and my 9am focus is no longer a myth."
           </p>
           <div>
-            <p class="font-display font-semibold text-[13px] text-sys-dark">@sarah_builds</p>
-            <p class="font-body text-[12px] text-sys-muted">Founding Engineer, Some Hot YC Startup</p>
+            <p class="font-display font-semibold text-[13px] text-sys-dark">Priya R.</p>
+            <p class="font-body text-[12px] text-sys-muted">Design Principal, Architecture Firm</p>
           </div>
         </div>
 
         <div class="testi-card bg-sys-surface p-8 flex flex-col justify-between gap-8 min-h-[220px]">
           <p class="font-body text-[15px] text-sys-dark leading-[1.7]">
-            "Our P99 morning routine dropped from 45 minutes to 8. The only infrastructure decision I've never regretted."
+            "We started stocking it in the studio. Three designers, one box, gone by Tuesday. That's the only review you need."
           </p>
           <div>
-            <p class="font-display font-semibold text-[13px] text-sys-dark">@dm_patel</p>
-            <p class="font-body text-[12px] text-sys-muted">CTO, Breakfast.io</p>
+            <p class="font-display font-semibold text-[13px] text-sys-dark">James O.</p>
+            <p class="font-body text-[12px] text-sys-muted">Studio Founder, Pentagram Alum</p>
           </div>
         </div>
 
         <!-- Accent card — inverted -->
         <div class="bg-sys-blue p-8 flex flex-col justify-between gap-8 min-h-[220px]">
           <p class="font-body text-[15px] text-white leading-[1.7]">
-            "Put it in my YAML config and now it just runs every morning. Zero-touch breakfast. The way infrastructure should work."
+            "I pitched a client for two years. Started eating Branflakes in January. Closed the deal in March. I'm not saying it's the cereal. I'm not <em>not</em> saying it either."
           </p>
           <div>
-            <p class="font-display font-semibold text-[13px] text-white">@infra_kira</p>
-            <p class="font-body text-[12px] text-white/55">Platform Engineer, Kubernetes Aficionado</p>
+            <p class="font-display font-semibold text-[13px] text-white">Sofia L.</p>
+            <p class="font-body text-[12px] text-white/55">Agency Director, $40M Creative Studio</p>
           </div>
         </div>
 
         <div class="testi-card bg-sys-surface p-8 flex flex-col justify-between gap-8 min-h-[220px]">
           <p class="font-body text-[15px] text-sys-dark leading-[1.7]">
-            "Switched our entire eng team. PR review quality improved noticeably. We shipped 3 features before 9am standup."
+            "The texture holds in oat milk longer than most cereals survive regular milk. For those of us eating while reviewing work, that's not a small thing."
           </p>
           <div>
-            <p class="font-display font-semibold text-[13px] text-sys-dark">@josh_dev_</p>
-            <p class="font-body text-[12px] text-sys-muted">VP Engineering, Cereal-Powered Startup</p>
+            <p class="font-display font-semibold text-[13px] text-sys-dark">David K.</p>
+            <p class="font-body text-[12px] text-sys-muted">Senior Art Director, Wieden+Kennedy</p>
           </div>
         </div>
 
         <div class="testi-card bg-sys-surface p-8 flex flex-col justify-between gap-8 min-h-[220px]">
           <p class="font-body text-[15px] text-sys-dark leading-[1.7]">
-            "My therapist asked what changed. I said Branflakes. She asked me to elaborate. She's now on the waitlist."
+            "My clients asked what changed about my work this year. Honestly? I started eating breakfast. Specifically, this one. Intention starts before you open the brief."
           </p>
           <div>
-            <p class="font-display font-semibold text-[13px] text-sys-dark">@anxious_devrel</p>
-            <p class="font-body text-[12px] text-sys-muted">DevRel, Definitely Not Burned Out</p>
+            <p class="font-display font-semibold text-[13px] text-sys-dark">Nora M.</p>
+            <p class="font-body text-[12px] text-sys-muted">Brand Strategist &amp; Creative Consultant</p>
           </div>
         </div>
 
@@ -384,22 +386,40 @@
        FOOTER CTA
   ════════════════════════════════════════ -->
   <section class="py-32 px-6 lg:px-12 bg-sys-dark relative overflow-hidden">
-    <!-- Ambient glow -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-sys-blue/8 blur-3xl pointer-events-none"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[200px] rounded-full bg-sys-amber/8 blur-2xl pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto text-center relative z-10">
-      <img src="brand_assets/Branflakes%20logo.png" alt="Branflakes" class="h-11 w-auto mx-auto mb-12 brightness-0 invert opacity-70" />
+      <!-- SVG mark replaces the gray-box PNG -->
+      <div class="flex justify-center mb-12">
+        <svg width="48" height="48" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="opacity-60">
+          <polygon points="16,1 21.5,9 16,12.5 10.5,9"       fill="#0A84FF"/>
+          <polygon points="31,16 23,11.5 19.5,16 23,20.5"    fill="#0A84FF"/>
+          <polygon points="16,31 10.5,23 16,19.5 21.5,23"    fill="#0A84FF"/>
+          <polygon points="1,16 9,11.5 12.5,16 9,20.5"       fill="#0A84FF"/>
+          <polygon points="21.5,9 23,11.5 19.5,16 16,12.5"   fill="#FF9500"/>
+          <polygon points="23,20.5 21.5,23 16,19.5 19.5,16"  fill="#FF9500"/>
+          <polygon points="10.5,23 9,20.5 12.5,16 16,19.5"   fill="#FF9500"/>
+          <polygon points="9,11.5 10.5,9 16,12.5 12.5,16"    fill="#FF9500"/>
+          <polygon points="12.5,16 16,12.5 19.5,16 16,19.5"  fill="#0A84FF"/>
+        </svg>
+      </div>
       <h2 class="font-display font-black leading-[0.9] tracking-[-0.04em] text-white mb-6"
           style="font-size: clamp(3rem, 7vw, 6.5rem);">
-        Ship something<br /><span class="text-sys-amber">before breakfast.</span>
+        Start your morning<br /><span class="text-sys-amber">with intention.</span>
       </h2>
-      <p class="font-body text-[16px] text-white/40 leading-relaxed mb-12 max-w-[360px] mx-auto">
-        Join 10,000 engineers who start every production deploy with a bowl.
+      <p class="font-body text-[16px] text-white/40 leading-relaxed mb-12 max-w-[400px] mx-auto">
+        The cereal for designers, agency owners, and high-end creators who refuse to let breakfast be an afterthought.
       </p>
-      <a href="#" class="inline-block font-display font-bold text-[15px] bg-sys-amber text-sys-dark px-10 py-4 rounded-full hover:bg-[#E08600] transition-colors duration-150 hover:shadow-[0_8px_28px_rgba(255,149,0,0.38)] active:scale-[0.97]">
-        Start Your Free Bowl
-      </a>
+      <!-- Two CTA buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="#" class="font-display font-bold text-[15px] bg-sys-amber text-sys-dark px-10 py-4 rounded-full hover:bg-[#E08600] transition-colors duration-150 hover:shadow-[0_8px_28px_rgba(255,149,0,0.38)] active:scale-[0.97]">
+          Order Your First Box
+        </a>
+        <a href="about.html" class="font-display font-semibold text-[15px] text-white/50 hover:text-white transition-colors duration-150 flex items-center gap-1.5">
+          Our Story <span class="text-sys-amber">→</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -408,7 +428,7 @@
   ════════════════════════════════════════ -->
   <footer class="py-7 px-6 lg:px-12 bg-[#111113] border-t border-white/[0.04]">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <p class="font-body text-[11px] text-white/25">© 2026 Branflakes, Inc. All rights reserved. Not actual cereal.</p>
+      <p class="font-body text-[11px] text-white/25">© 2026 Branflakes, Inc. All rights reserved. An actual cereal.</p>
       <div class="flex items-center gap-6">
         <a href="about.html" class="font-display font-medium text-[11px] text-white/25 hover:text-white/50 transition-colors duration-150">About Us</a>
         <span class="text-white/10">·</span>
