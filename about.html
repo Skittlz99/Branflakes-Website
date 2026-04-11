@@ -151,16 +151,10 @@
 
           <div class="font-body text-[17px] text-sys-dark/80 leading-[1.75] space-y-6 mb-14">
             <p>
-              Branflakes was built entirely through <span class="text-sys-dark font-semibold">AI-assisted development</span> — a structured process of translating precise design intent into production code through conversation with <span class="text-sys-dark font-semibold">Claude Code</span>.
-            </p>
-            <p>
-              The design system was specified first: color tokens, typographic hierarchy, spacing rules, motion behavior, and component logic — all encoded as hard constraints in a <code class="font-mono text-[13px] bg-black/5 px-1.5 py-0.5 rounded">CLAUDE.md</code> file that governed every downstream output. No templates. No drag-and-drop. Every layout decision was specified in language and rendered in markup.
-            </p>
-            <p>
-              The brand assets — logo mark and packaging concept — were generated through custom AI image prompting, then integrated directly into the design system as production assets. The result is a fully coherent visual identity built without a traditional design tool ever being opened.
+              The goal of this project was simple: <span class="text-sys-dark font-semibold">learn how AI-assisted development actually works in practice.</span> Specifically, using the <span class="text-sys-dark font-semibold">Claude Code extension inside Visual Studio Code</span> to vibe code an entire website from scratch — brand identity, copy, layout, and deployment — without opening a single traditional design tool.
             </p>
             <p class="text-sys-muted">
-              The purpose was clear: demonstrate that AI-assisted development, when paired with rigorous design thinking and precise prompting, produces work indistinguishable from a boutique creative agency. This site is that proof of concept.
+              The result is Branflakes. Every line of HTML, every animation, every card and color token was generated through conversation. What follows is exactly how it was done.
             </p>
           </div>
 
@@ -170,32 +164,32 @@
             <div class="flex gap-5 p-6 bg-white/50 border-b border-black/[0.06]">
               <span class="step-num mt-0.5 shrink-0">01</span>
               <div>
-                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Design System Architecture</p>
-                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Brand tokens, type scales, spacing systems, and motion specs authored as enforced constraints in <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">CLAUDE.md</code>. Every output was governed by these rules without exception.</p>
+                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Install the Claude Code Extension in VS Code</p>
+                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Added the Claude Code extension directly inside Visual Studio Code. This brings the AI into the same environment where the code lives — no context switching, no copy-pasting between windows. The editor and the assistant become one interface.</p>
               </div>
             </div>
 
             <div class="flex gap-5 p-6 bg-white/50 border-b border-black/[0.06]">
               <span class="step-num mt-0.5 shrink-0">02</span>
               <div>
-                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">AI Brand Asset Generation</p>
-                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Logo mark and packaging concept generated through iterative AI image prompting. Multiple rounds of refinement until the mark achieved sufficient visual distinctiveness and brand alignment.</p>
+                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Create Markdown Skill &amp; Config Files</p>
+                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Created a set of <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">.md</code> files to give Claude structured, persistent instructions. A <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">CLAUDE.md</code> held the brand rules, design constraints, and hard guardrails. Separate skill files defined specific AI behaviors — for example, a <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">frontend-design</code> skill enforcing high-craft UI standards, a <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">commit</code> skill for consistent git messages, and a <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">simplify</code> skill for reviewing and cleaning generated code.</p>
               </div>
             </div>
 
             <div class="flex gap-5 p-6 bg-white/50 border-b border-black/[0.06]">
               <span class="step-num mt-0.5 shrink-0">03</span>
               <div>
-                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Frontend Development via Claude Code</p>
-                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Full frontend — semantic HTML, CSS animations, responsive layout systems, interactive states — generated through structured prompting in Claude Code. Tailwind CDN used as a utility layer over the custom token system.</p>
+                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Write Detailed Prompts</p>
+                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Wrote precise, intentional prompts for every section of the site — specifying the layout, the audience, the tone, the sections, the copy direction, and the visual treatment. The quality of the output is directly tied to the specificity of the input. Vague prompts produce vague results. A detailed brief produces production-ready code.</p>
               </div>
             </div>
 
             <div class="flex gap-5 p-6 bg-white/50">
               <span class="step-num mt-0.5 shrink-0">04</span>
               <div>
-                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Automated Visual QA</p>
-                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Chrome DevTools Protocol used to capture automated screenshots at each iteration. Each output reviewed against design intent; corrections issued in natural language and applied immediately.</p>
+                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">GitHub Repository &amp; Vercel Deployment</p>
+                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Once the site was built, initialized a GitHub repository and pushed the project directly from VS Code. Connected the repo to <span class="text-sys-dark font-medium">Vercel</span> for automatic deployment — taking the site from local files to a live public URL in under five minutes. Every subsequent push triggers a new deploy automatically.</p>
               </div>
             </div>
 
@@ -203,9 +197,9 @@
 
           <!-- Tool callout -->
           <div class="mt-8 p-6 border border-sys-blue/20 rounded-2xl bg-sys-blue/[0.04]">
-            <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Built with Claude Code</p>
+            <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Built with Claude Code in VS Code</p>
             <p class="font-body text-[13px] text-sys-muted leading-relaxed">
-              Claude Code is Anthropic's official AI development assistant. This project used it as the primary interface: architecture, implementation, iteration, and debugging all happened through a single conversational session. No IDE switching. No context loss. End-to-end execution in one thread.
+              Claude Code is Anthropic's official AI coding assistant, available as a VS Code extension. This entire project — architecture, implementation, copy, iteration, and git workflow — was executed through a single conversational session inside the editor. No IDE switching. No context loss. One interface, end to end.
             </p>
           </div>
         </div>
