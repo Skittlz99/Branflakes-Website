@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+**/.DS_Store
+._*
+
+# Screenshots (generated artifacts)
+temporary screenshots/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Chrome debug temp dirs
+/tmp/chrome-*

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Branflakes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sys-blue':    '#0A84FF',
+            'sys-amber':   '#FF9500',
+            'sys-surface': '#F2F2F7',
+            'sys-dark':    '#1C1C1E',
+            'sys-muted':   '#8E8E93',
+          },
+          fontFamily: {
+            display: ['"Inter Tight"', 'sans-serif'],
+            body:    ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --color-primary-tech:  #0A84FF;
+      --color-accent-amber:  #FF9500;
+      --color-surface-base:  #F2F2F7;
+      --color-text-high:     #1C1C1E;
+      --color-text-muted:    #8E8E93;
+    }
+
+    /* ── Noise grain ─────────────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Staggered fade-up ───────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .afu  { animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .d1   { animation-delay: 0.08s; }
+    .d2   { animation-delay: 0.2s;  }
+    .d3   { animation-delay: 0.34s; }
+    .d4   { animation-delay: 0.5s;  }
+    .d5   { animation-delay: 0.66s; }
+
+    /* ── Header glassmorphism ────────────────────────── */
+    .header-blur {
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background-color: rgba(242, 242, 247, 0.85);
+    }
+
+    /* ── Rule line ───────────────────────────────────── */
+    .rule { border-top: 1px solid rgba(28,28,30,0.1); }
+
+    /* ── Process step number ─────────────────────────── */
+    .step-num {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 800;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--color-text-muted);
+    }
+
+    /* ── Focus ring ──────────────────────────────────── */
+    a:focus-visible { outline: 2px solid var(--color-primary-tech); outline-offset: 3px; border-radius: 4px; }
+
+    /* ── Scrollbar ───────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--color-surface-base); }
+    ::-webkit-scrollbar-thumb { background: var(--color-text-muted); border-radius: 2px; }
+  </style>
+</head>
+<body class="bg-sys-surface text-sys-dark font-body antialiased">
+
+  <!-- ═══════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════ -->
+  <header class="fixed top-0 left-0 right-0 z-50 header-blur border-b border-black/[0.06]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-[60px] flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+        <img src="brand_assets/Branflakes%20logo.png" alt="Branflakes" class="h-[34px] w-auto" />
+      </a>
+      <nav class="flex items-center gap-7">
+        <a href="about.html" class="font-display font-semibold text-[13px] tracking-tight text-sys-dark transition-colors duration-150">
+          About Us
+        </a>
+        <a href="index.html#" class="font-display font-semibold text-[13px] bg-sys-blue text-white px-5 py-2.5 rounded-full hover:bg-[#0070E0] transition-colors duration-150 hover:shadow-[0_4px_18px_rgba(10,132,255,0.32)] active:scale-[0.97]">
+          Start Free Bowl
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       HERO — ABOUT
+  ════════════════════════════════════════ -->
+  <section class="pt-[60px] px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto py-24 lg:py-36 border-b border-black/[0.07]">
+      <p class="afu d1 font-display font-semibold text-[11px] tracking-[0.2em] text-sys-blue uppercase mb-6">
+        About Us
+      </p>
+      <h1 class="afu d2 font-display font-black leading-[0.88] tracking-[-0.04em] text-sys-dark max-w-4xl"
+          style="font-size: clamp(4rem, 9vw, 8rem);">
+        The story<br />behind the<br /><span class="text-sys-blue">flake</span><span class="text-sys-amber">.</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       THE STORY
+  ════════════════════════════════════════ -->
+  <section class="px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto py-24 lg:py-32 border-b border-black/[0.07]">
+
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start">
+        <!-- Left label column -->
+        <div>
+          <p class="font-display font-semibold text-[11px] tracking-[0.2em] text-sys-muted uppercase sticky top-[80px]">
+            The Origin
+          </p>
+        </div>
+
+        <!-- Right content column -->
+        <div class="max-w-[640px]">
+          <h2 class="font-display font-black text-[2.4rem] lg:text-[3rem] leading-[1.0] tracking-[-0.03em] text-sys-dark mb-10">
+            It started with a nickname.
+          </h2>
+
+          <div class="font-body text-[17px] text-sys-dark/80 leading-[1.75] space-y-6">
+            <p>
+              In middle school, Branden had a nickname: <strong class="font-semibold text-sys-dark">Branflakes</strong>. It wasn't subtle. It wasn't particularly cool. It was, at best, a dietary pun lobbed across a cafeteria and somehow made to stick — the way all the best nicknames do.
+            </p>
+            <p>
+              It stuck for years. Then it got shelved. Then, roughly a decade and several lines of production code later, it got resurrected — not as a nostalgic joke, but as something else entirely: a conceptual brand. A design exercise. A statement about what happens when you apply serious craft to a ridiculous premise.
+            </p>
+            <p>
+              <span class="text-sys-dark font-semibold">Branflakes</span> is that premise executed without apology. A high-end SaaS brand built around breakfast cereal. Enterprise-grade aesthetics applied to a bowl. Because if you're going to do something, do it like you mean it.
+            </p>
+            <p class="text-sys-muted">
+              The founder — Branden — is a developer and designer who spends too much time thinking about design systems, and apparently not enough time thinking about whether his middle school nickname should have stayed buried.
+            </p>
+          </div>
+
+          <!-- Founder card -->
+          <div class="mt-14 flex items-center gap-5 p-6 bg-white/60 border border-black/[0.06] rounded-2xl">
+            <img src="brand_assets/Branflakes%20logo.png" alt="Branflakes mark" class="h-12 w-12 object-contain shrink-0" />
+            <div>
+              <p class="font-display font-bold text-[14px] text-sys-dark">Branden Korf</p>
+              <p class="font-body text-[13px] text-sys-muted">Founder &amp; CEO, Branflakes, Inc.</p>
+              <p class="font-body text-[12px] text-sys-blue mt-0.5">Formerly: Middle School Student with a Nickname</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       HOW IT WAS BUILT
+  ════════════════════════════════════════ -->
+  <section class="px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto py-24 lg:py-32 border-b border-black/[0.07]">
+
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start">
+        <!-- Left label column -->
+        <div>
+          <p class="font-display font-semibold text-[11px] tracking-[0.2em] text-sys-muted uppercase sticky top-[80px]">
+            The Process
+          </p>
+        </div>
+
+        <!-- Right content column -->
+        <div class="max-w-[640px]">
+          <h2 class="font-display font-black text-[2.4rem] lg:text-[3rem] leading-[1.0] tracking-[-0.03em] text-sys-dark mb-10">
+            How It Was Built.
+          </h2>
+
+          <div class="font-body text-[17px] text-sys-dark/80 leading-[1.75] space-y-6 mb-16">
+            <p>
+              This entire project is an exercise in <span class="text-sys-dark font-semibold">vibe coding</span> — the emerging practice of building production-quality software through structured, intent-driven collaboration with AI.
+            </p>
+            <p>
+              No templates were purchased. No Figma files were dragged off a marketplace. The design system, the brand guidelines, the color tokens, the typographic hierarchy — all of it was defined through precise, high-context prompting, then executed in code by <span class="text-sys-dark font-semibold">Claude Code</span>. Every pixel of layout, every hover state, every staggered animation was specified in language and rendered in markup.
+            </p>
+            <p>
+              The brand visuals — the logo, the cereal box concept — were generated using custom AI image generation prompts, then integrated into the design system as real assets. Not placeholders. Not lorem ipsum equivalents. Real brand artifacts, generated from scratch.
+            </p>
+            <p class="text-sys-muted">
+              The goal was simple: practice the full stack of modern, AI-assisted web development. Prove that with the right constraints, the right prompts, and a clear design vision, you can build something that looks and feels like it came out of a San Francisco agency — because the craft was always the point.
+            </p>
+          </div>
+
+          <!-- Process steps -->
+          <div class="space-y-0 border border-black/[0.07] rounded-2xl overflow-hidden">
+
+            <div class="flex gap-5 p-6 bg-white/50 border-b border-black/[0.06]">
+              <span class="step-num mt-0.5 shrink-0">01</span>
+              <div>
+                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Design System Prompting</p>
+                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Color tokens, typographic rules, spacing systems, and motion specs written into a <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">CLAUDE.md</code> as hard constraints. AI reads them as law.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-5 p-6 bg-white/50 border-b border-black/[0.06]">
+              <span class="step-num mt-0.5 shrink-0">02</span>
+              <div>
+                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">AI Brand Asset Generation</p>
+                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Logo mark and cereal box concept generated via custom image AI. Iterated on geometric data-bowl motifs until the mark felt ownable.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-5 p-6 bg-white/50 border-b border-black/[0.06]">
+              <span class="step-num mt-0.5 shrink-0">03</span>
+              <div>
+                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Vibe-Coded with Claude Code</p>
+                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Full frontend — markup, animations, layout systems — generated via Claude Code using structured, high-context prompts. Tailwind CDN as a utility layer over custom tokens.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-5 p-6 bg-white/50">
+              <span class="step-num mt-0.5 shrink-0">04</span>
+              <div>
+                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Screenshot, Compare, Iterate</p>
+                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Automated screenshot loops using Puppeteer. Each output compared against design intent in real-time. Design corrections made in natural language.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Tool callout -->
+          <div class="mt-10 p-6 border border-sys-blue/20 rounded-2xl bg-sys-blue/[0.04]">
+            <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Built with Claude Code</p>
+            <p class="font-body text-[13px] text-sys-muted leading-relaxed">
+              Claude Code is Anthropic's official AI coding assistant. This project used it as the primary development environment: planning, scaffolding, writing, and debugging all happened through conversation. Zero context switching. One interface, end to end.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       BOTTOM CTA
+  ════════════════════════════════════════ -->
+  <section class="px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto py-24 lg:py-32">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <h2 class="font-display font-black text-[clamp(2.5rem,5vw,4rem)] leading-[0.92] tracking-[-0.03em] text-sys-dark">
+          Ready to fuel<br />your stack?
+        </h2>
+        <div>
+          <p class="font-body text-[16px] text-sys-muted leading-[1.75] mb-8">
+            Branflakes is available now. Join the engineers who eat before they deploy. Your codebase will thank you.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="index.html" class="font-display font-bold text-[14px] bg-sys-dark text-white px-7 py-3.5 rounded-full hover:bg-[#2C2C2E] transition-colors duration-150 hover:shadow-[0_6px_24px_rgba(28,28,30,0.2)] active:scale-[0.97]">
+              Start Your Free Bowl
+            </a>
+            <a href="index.html" class="font-display font-semibold text-[14px] text-sys-dark/50 hover:text-sys-dark transition-colors duration-150 flex items-center gap-1.5">
+              ← Back to Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer class="py-7 px-6 lg:px-12 bg-sys-dark border-t border-white/[0.04]">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <p class="font-body text-[11px] text-white/25">© 2026 Branflakes, Inc. All rights reserved. Not actual cereal.</p>
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="font-display font-medium text-[11px] text-white/25 hover:text-white/50 transition-colors duration-150">Home</a>
+        <span class="text-white/10">·</span>
+        <a href="#" class="font-display font-medium text-[11px] text-white/25 hover:text-white/50 transition-colors duration-150">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
