@@ -294,21 +294,26 @@
     <button class="btn-ghost" onclick="restartGame()">Play again</button>
   </div>
 
-  <!-- ── Game Over screen ─────────────────────── -->
+  <!-- ── Game Over screen — always shows Try Again ── -->
   <div id="gameOverScreen" class="screen hidden">
     <p class="screen-eyebrow">Game Over</p>
     <h1 class="screen-title">The stack<br /><span style="color:var(--gold)">fell.</span></h1>
-    <p class="screen-sub">You made it to block <span id="finalScore">0</span>. Stack all 10 to win the code. Come back tomorrow for another shot.</p>
-    <a href="index.html" class="btn-primary">Back to site</a>
-    <p style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(240,244,248,0.2);margin-top:14px;letter-spacing:0.08em;">One attempt per 18 hours.</p>
+    <p class="screen-sub" id="gameOverMsg">You made it to block <span id="finalScore">0</span>. Stack all 10 to win the code.</p>
+    <button class="btn-primary" onclick="restartGame()">Try Again</button>
+    <a href="index.html" class="btn-ghost">Back to site</a>
   </div>
 
-  <!-- ── Cooldown screen ───────────────────────── -->
+  <!-- ── Already won screen (coupon mode, 18hr lock) ── -->
   <div id="cooldownScreen" class="screen hidden">
-    <p class="screen-eyebrow">Not yet.</p>
-    <h1 class="screen-title">Come back<br /><span style="color:var(--gold)">tomorrow.</span></h1>
-    <p class="screen-sub" id="cooldownMsg">You already played today. The Stack resets in 18 hours — one attempt per day keeps it worth winning.</p>
-    <a href="index.html" class="btn-primary">Back to site</a>
+    <p class="screen-eyebrow">Already earned.</p>
+    <h1 class="screen-title">You've got<br /><span style="color:var(--gold)">the code.</span></h1>
+    <p class="screen-sub" id="cooldownMsg">Use STACK16 at checkout for 16.7% off your first box.</p>
+    <div class="code-box" style="margin-bottom:24px;">
+      <p class="code-label">Your discount code</p>
+      <p class="code-value">STACK16</p>
+    </div>
+    <a href="index.html?order=1" class="btn-primary" onclick="localStorage.setItem('branflakes_code','STACK16')">Order Now — 16.7% off</a>
+    <a href="index.html" class="btn-ghost">Back to site</a>
   </div>
 
   <script>
@@ -388,39 +393,37 @@
     }
     window.applyCode = applyCode;
 
-    // ── Fun mode (no cooldown, no code reward) ────────────
+    // ── Mode ──────────────────────────────────────────────
+    // FUN_MODE = unlimited retries, no coupon ever
+    // Coupon mode = unlimited retries, 18hr cooldown only after WINNING
     const FUN_MODE = new URLSearchParams(window.location.search).get('fun') === '1';
-
-    // ── Cooldown check (18 hours) ─────────────────────────
     const COOLDOWN_MS = 18 * 60 * 60 * 1000;
 
-    function checkCooldown() {
-      if (FUN_MODE) return false;   // fun mode bypasses cooldown
-      const lostAt = parseInt(localStorage.getItem('branflakes_lost_at') || '0', 10);
-      if (!lostAt) return false;
-      const elapsed = Date.now() - lostAt;
+    function checkAlreadyWon() {
+      if (FUN_MODE) return false;
+      const wonAt = parseInt(localStorage.getItem('branflakes_won_at') || '0', 10);
+      if (!wonAt) return false;
+      const elapsed = Date.now() - wonAt;
       if (elapsed < COOLDOWN_MS) {
         const remaining = COOLDOWN_MS - elapsed;
         const hrs  = Math.floor(remaining / 3_600_000);
         const mins = Math.floor((remaining % 3_600_000) / 60_000);
         document.getElementById('cooldownMsg').textContent =
-          `You already played today. The Stack resets in ${hrs}h ${mins}m — one attempt per day keeps it worth winning.`;
+          `Use STACK16 at checkout for 16.7% off. You can earn a new code in ${hrs}h ${mins}m.`;
         return true;
       }
-      // Cooldown expired — clear it so they can play again
-      localStorage.removeItem('branflakes_lost_at');
+      // Cooldown expired — let them play for a new code
+      localStorage.removeItem('branflakes_won_at');
+      localStorage.removeItem('branflakes_code');
       return false;
     }
 
-    // Check on load — show cooldown or start screen
     (function init() {
       if (FUN_MODE) {
-        // Update start screen for fun mode
-        document.querySelector('#startScreen .screen-eyebrow').textContent = 'Branflakes × The Stack';
         document.querySelector('#startScreen .screen-sub').textContent =
-          'A moving platform drops from above. Tap to cut — keep what overlaps. Just for fun.';
+          'A moving platform drops from above. Tap to cut — keep what overlaps. Just for fun, no code.';
       }
-      if (checkCooldown()) {
+      if (checkAlreadyWon()) {
         document.getElementById('startScreen').classList.add('hidden');
         document.getElementById('cooldownScreen').classList.remove('hidden');
       }
@@ -493,16 +496,17 @@
       document.getElementById('tapHint').style.opacity = '0';
 
       if (FUN_MODE) {
-        // Fun mode: show a no-code win screen
         const ws = document.getElementById('winScreen');
         ws.querySelector('.screen-eyebrow').textContent = 'Nice stacking.';
         ws.querySelector('.screen-title').innerHTML = 'You nailed<br /><span style="color:var(--gold)">all 10.</span>';
-        ws.querySelector('.screen-sub').textContent = 'Play the real game to earn a 16.7% discount code.';
+        ws.querySelector('.screen-sub').textContent = 'Play the coupon version to earn 16.7% off.';
         ws.querySelector('.code-box').style.display = 'none';
         ws.querySelector('a.btn-primary').textContent = 'Play for real →';
         ws.querySelector('a.btn-primary').href = 'game.html';
+        ws.querySelector('a.btn-primary').removeAttribute('onclick');
       } else {
         localStorage.setItem('branflakes_code', 'STACK16');
+        localStorage.setItem('branflakes_won_at', Date.now().toString());
       }
 
       setTimeout(() => {
@@ -513,10 +517,14 @@
     function gameOver() {
       state = 'over';
       cancelAnimationFrame(raf);
-      if (!FUN_MODE) localStorage.setItem('branflakes_lost_at', Date.now().toString());
+      // No cooldown on loss — unlimited retries in both modes
       document.getElementById('tapHint').style.opacity = '0';
-      document.getElementById('finalScore').textContent = stack.length - 1;  // -1 for base
-      // Animate mover falling
+      document.getElementById('finalScore').textContent = stack.length - 1;
+      const overMsg = FUN_MODE
+        ? `You made it to block ${stack.length - 1}. Give it another go!`
+        : `You made it to block ${stack.length - 1}. Stack all 10 to win 16.7% off.`;
+      document.getElementById('gameOverMsg').innerHTML =
+        `${overMsg.replace(/block \d+/, 'block <span id="finalScore">' + (stack.length - 1) + '</span>')}`;
       const fallMover = { ...mover };
       let fallV = 0;
       function fall() {
@@ -527,22 +535,7 @@
           requestAnimationFrame(fall);
         } else {
           setTimeout(() => {
-            const el = document.getElementById('gameOverScreen');
-            if (FUN_MODE) {
-              el.querySelector('.screen-sub').textContent =
-                `You made it to block ${stack.length - 1}. Give it another go!`;
-              el.querySelector('a.btn-primary').style.display = 'none';
-              el.querySelector('p[style]').style.display = 'none';
-              // show try-again if not already added
-              if (!el.querySelector('.fun-retry')) {
-                const btn = document.createElement('button');
-                btn.className = 'btn-primary fun-retry';
-                btn.textContent = 'Try Again';
-                btn.onclick = restartGame;
-                el.insertBefore(btn, el.querySelector('a.btn-primary'));
-              }
-            }
-            el.classList.remove('hidden');
+            document.getElementById('gameOverScreen').classList.remove('hidden');
           }, 200);
         }
       }
