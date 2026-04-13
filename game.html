@@ -490,8 +490,21 @@
     function win() {
       state = 'won';
       cancelAnimationFrame(raf);
-      if (!FUN_MODE) localStorage.setItem('branflakes_code', 'STACK16');
       document.getElementById('tapHint').style.opacity = '0';
+
+      if (FUN_MODE) {
+        // Fun mode: show a no-code win screen
+        const ws = document.getElementById('winScreen');
+        ws.querySelector('.screen-eyebrow').textContent = 'Nice stacking.';
+        ws.querySelector('.screen-title').innerHTML = 'You nailed<br /><span style="color:var(--gold)">all 10.</span>';
+        ws.querySelector('.screen-sub').textContent = 'Play the real game to earn a 16.7% discount code.';
+        ws.querySelector('.code-box').style.display = 'none';
+        ws.querySelector('a.btn-primary').textContent = 'Play for real →';
+        ws.querySelector('a.btn-primary').href = 'game.html';
+      } else {
+        localStorage.setItem('branflakes_code', 'STACK16');
+      }
+
       setTimeout(() => {
         document.getElementById('winScreen').classList.remove('hidden');
       }, 600);
