@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>The Stack — Branflakes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:  #2D5A82;
+      --navy-dark: #1E3D59;
+      --navy-deeper: #142840;
+      --gold:  #E6A543;
+      --gold-light: #F2BE6A;
+      --gold-dark: #C8871A;
+      --white: #F0F4F8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--navy-deeper);
+      font-family: 'Inter Tight', sans-serif;
+      overscroll-behavior: none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    /* ── Blueprint grid background ──────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(240,244,248,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240,244,248,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Header ─────────────────────────────────── */
+    .game-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: rgba(20, 40, 64, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(240,244,248,0.06);
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .header-logo span {
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    .header-logo span em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .score-display {
+      font-weight: 800;
+      font-size: 13px;
+      color: var(--white);
+      opacity: 0.7;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Main game area ──────────────────────────── */
+    #gameWrap {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 60px;
+      min-height: 100dvh;
+    }
+
+    /* ── Canvas ──────────────────────────────────── */
+    #gameCanvas {
+      display: block;
+      touch-action: none;
+      cursor: pointer;
+    }
+
+    /* ── Overlay screens ─────────────────────────── */
+    .screen {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      background: rgba(20, 40, 64, 0.96);
+      backdrop-filter: blur(12px);
+    }
+    .screen.hidden { display: none; }
+
+    .screen-eyebrow {
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .screen-title {
+      font-weight: 900;
+      font-size: clamp(2.4rem, 8vw, 4rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .screen-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: rgba(240,244,248,0.45);
+      line-height: 1.65;
+      max-width: 300px;
+      margin-bottom: 32px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+      background: var(--gold);
+      color: var(--navy-deeper);
+      padding: 14px 36px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--gold-light); box-shadow: 0 8px 28px rgba(230,165,67,0.4); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    .btn-ghost {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 13px;
+      color: rgba(240,244,248,0.4);
+      padding: 10px 20px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      transition: color 0.15s ease;
+      text-decoration: none;
+      margin-top: 8px;
+    }
+    .btn-ghost:hover { color: rgba(240,244,248,0.75); }
+
+    /* ── Win code box ────────────────────────────── */
+    .code-box {
+      background: rgba(230,165,67,0.12);
+      border: 1px solid rgba(230,165,67,0.3);
+      border-radius: 14px;
+      padding: 14px 24px;
+      margin-bottom: 28px;
+    }
+    .code-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: rgba(240,244,248,0.4);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .code-value {
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+    }
+
+    /* ── Precision flash ─────────────────────────── */
+    #flashMsg {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      z-index: 200;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(20,40,64,0.9);
+      border: 1px solid rgba(230,165,67,0.3);
+      padding: 6px 16px;
+      border-radius: 99px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    #flashMsg.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── Tap hint ────────────────────────────────── */
+    #tapHint {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: rgba(240,244,248,0.3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 50;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:0.7} }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="game-header">
+    <a href="index.html" class="header-logo">
+      <svg width="22" height="22" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="16,1 21.5,9 16,12.5 10.5,9"       fill="#0A84FF"/>
+        <polygon points="31,16 23,11.5 19.5,16 23,20.5"    fill="#0A84FF"/>
+        <polygon points="16,31 10.5,23 16,19.5 21.5,23"    fill="#0A84FF"/>
+        <polygon points="1,16 9,11.5 12.5,16 9,20.5"       fill="#0A84FF"/>
+        <polygon points="21.5,9 23,11.5 19.5,16 16,12.5"   fill="#E6A543"/>
+        <polygon points="23,20.5 21.5,23 16,19.5 19.5,16"  fill="#E6A543"/>
+        <polygon points="10.5,23 9,20.5 12.5,16 16,19.5"   fill="#E6A543"/>
+        <polygon points="9,11.5 10.5,9 16,12.5 12.5,16"    fill="#E6A543"/>
+        <polygon points="12.5,16 16,12.5 19.5,16 16,19.5"  fill="#0A84FF"/>
+      </svg>
+      <span>BRAN<em>FLAKES</em></span>
+    </a>
+    <div class="score-display">LEVEL <span id="levelDisplay">0</span> / 10</div>
+  </header>
+
+  <!-- Game canvas -->
+  <div id="gameWrap">
+    <canvas id="gameCanvas"></canvas>
+  </div>
+
+  <!-- Tap hint -->
+  <p id="tapHint">Tap · Click · Space to drop</p>
+
+  <!-- Flash message -->
+  <div id="flashMsg"></div>
+
+  <!-- ── Start screen ─────────────────────────── -->
+  <div id="startScreen" class="screen">
+    <p class="screen-eyebrow">Branflakes × The Stack</p>
+    <h1 class="screen-title">Stack 10<br /><span style="color:var(--gold)">blocks.</span></h1>
+    <p class="screen-sub">A moving platform drops from above. Tap to cut — keep what overlaps. Stack all 10 to win a 16.7% discount code.</p>
+    <button class="btn-primary" onclick="startGame()">Play Now</button>
+    <a href="index.html" class="btn-ghost">No thanks, take me back</a>
+  </div>
+
+  <!-- ── Win screen ───────────────────────────── -->
+  <div id="winScreen" class="screen hidden">
+    <p class="screen-eyebrow">You did it.</p>
+    <h1 class="screen-title">The Stack<br /><span style="color:var(--gold)">is complete.</span></h1>
+    <p class="screen-sub" style="margin-bottom:20px;">Use the code below for 16.7% off your first box. It's already saved to your browser.</p>
+    <div class="code-box">
+      <p class="code-label">Your discount code</p>
+      <p class="code-value">STACK16</p>
+    </div>
+    <a href="index.html?order=1" class="btn-primary" onclick="applyCode()">Order Now — 16.7% off</a>
+    <button class="btn-ghost" onclick="restartGame()">Play again</button>
+  </div>
+
+  <!-- ── Game Over screen ─────────────────────── -->
+  <div id="gameOverScreen" class="screen hidden">
+    <p class="screen-eyebrow">Game Over</p>
+    <h1 class="screen-title">The stack<br /><span style="color:var(--gold)">fell.</span></h1>
+    <p class="screen-sub">You made it to block <span id="finalScore">0</span>. Stack all 10 to win the code. Come back tomorrow for another shot.</p>
+    <a href="index.html" class="btn-primary">Back to site</a>
+    <p style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(240,244,248,0.2);margin-top:14px;letter-spacing:0.08em;">One attempt per 18 hours.</p>
+  </div>
+
+  <!-- ── Cooldown screen ───────────────────────── -->
+  <div id="cooldownScreen" class="screen hidden">
+    <p class="screen-eyebrow">Not yet.</p>
+    <h1 class="screen-title">Come back<br /><span style="color:var(--gold)">tomorrow.</span></h1>
+    <p class="screen-sub" id="cooldownMsg">You already played today. The Stack resets in 18 hours — one attempt per day keeps it worth winning.</p>
+    <a href="index.html" class="btn-primary">Back to site</a>
+  </div>
+
+  <script>
+  (function() {
+    // ── Constants ─────────────────────────────────────────
+    const TOTAL_BLOCKS   = 10;
+    const BLOCK_H        = 28;          // block height px
+    const INITIAL_W      = 190;         // starting block width (narrower = tighter cuts)
+    const INITIAL_SPEED  = 4.4;         // px/frame
+    const SPEED_STEP     = 0.7;         // faster each level
+    const NAVY_DEEP      = '#142840';
+    const NAVY           = '#2D5A82';
+    const NAVY_MID       = '#1E3D59';
+    const GOLD           = '#E6A543';
+    const GOLD_LIGHT     = '#F2BE6A';
+    const WHITE          = '#F0F4F8';
+    const GRID_COLOR     = 'rgba(240,244,248,0.035)';
+
+    // ── Canvas setup ─────────────────────────────────────
+    const canvas = document.getElementById('gameCanvas');
+    const ctx    = canvas.getContext('2d');
+
+    let W, H, offsetTop, stackBaseY, VISIBLE_BLOCKS;
+
+    function resize() {
+      const wrap   = document.getElementById('gameWrap');
+      W            = Math.min(window.innerWidth, 480);
+      H            = window.innerHeight;
+      canvas.width  = W;
+      canvas.height = H - 60; // below header
+      offsetTop     = 60;
+      VISIBLE_BLOCKS = Math.floor((canvas.height - 80) / (BLOCK_H + 4));
+      stackBaseY = canvas.height - 60;
+    }
+    resize();
+    window.addEventListener('resize', () => { resize(); if (state === 'playing') draw(); });
+
+    // ── State ─────────────────────────────────────────────
+    let state      = 'idle';   // idle | playing | over | won
+    let stack      = [];       // { x, w, y } each settled block
+    let mover      = null;     // currently moving block
+    let level      = 0;
+    let raf        = null;
+
+    // ── Input ─────────────────────────────────────────────
+    function drop() {
+      if (state !== 'playing') return;
+      if (!mover) return;
+      slice();
+    }
+    canvas.addEventListener('pointerdown', e => { e.preventDefault(); drop(); });
+    document.addEventListener('keydown',   e => { if (e.code === 'Space') { e.preventDefault(); drop(); } });
+
+    // ── Game flow ─────────────────────────────────────────
+    function startGame() {
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('winScreen').classList.add('hidden');
+      document.getElementById('gameOverScreen').classList.add('hidden');
+      document.getElementById('tapHint').style.opacity = '1';
+      stack  = [];
+      level  = 0;
+      state  = 'playing';
+      spawnBase();
+      loop();
+    }
+    window.startGame = startGame;
+
+    function restartGame() {
+      document.getElementById('winScreen').classList.add('hidden');
+      document.getElementById('gameOverScreen').classList.add('hidden');
+      startGame();
+    }
+    window.restartGame = restartGame;
+
+    function applyCode() {
+      localStorage.setItem('branflakes_code', 'STACK16');
+    }
+    window.applyCode = applyCode;
+
+    // ── Cooldown check (18 hours) ─────────────────────────
+    const COOLDOWN_MS = 18 * 60 * 60 * 1000;
+
+    function checkCooldown() {
+      const lostAt = parseInt(localStorage.getItem('branflakes_lost_at') || '0', 10);
+      if (!lostAt) return false;
+      const elapsed = Date.now() - lostAt;
+      if (elapsed < COOLDOWN_MS) {
+        const remaining = COOLDOWN_MS - elapsed;
+        const hrs  = Math.floor(remaining / 3_600_000);
+        const mins = Math.floor((remaining % 3_600_000) / 60_000);
+        document.getElementById('cooldownMsg').textContent =
+          `You already played today. The Stack resets in ${hrs}h ${mins}m — one attempt per day keeps it worth winning.`;
+        return true;
+      }
+      // Cooldown expired — clear it so they can play again
+      localStorage.removeItem('branflakes_lost_at');
+      return false;
+    }
+
+    // Check on load — show cooldown or start screen
+    (function init() {
+      if (checkCooldown()) {
+        document.getElementById('startScreen').classList.add('hidden');
+        document.getElementById('cooldownScreen').classList.remove('hidden');
+      }
+    })();
+
+    // ── Spawn first (static) base block ──────────────────
+    function spawnBase() {
+      const x = (W - INITIAL_W) / 2;
+      stack.push({ x, w: INITIAL_W, y: stackTopY(0) });
+      level = 1;
+      updateHUD();
+      spawnMover();
+    }
+
+    function stackTopY(extraBlocks) {
+      return stackBaseY - (stack.length + extraBlocks) * (BLOCK_H + 4);
+    }
+
+    // ── Spawn the moving block ────────────────────────────
+    function spawnMover() {
+      const prev    = stack[stack.length - 1];
+      const speed   = (INITIAL_SPEED + (level - 1) * SPEED_STEP) * (Math.random() < 0.5 ? 1 : -1);
+      mover = {
+        x:    speed > 0 ? -prev.w : W,
+        w:    prev.w,
+        y:    stackTopY(1),
+        speed
+      };
+    }
+
+    // ── Slice on drop ─────────────────────────────────────
+    function slice() {
+      if (!mover) return;
+      const prev  = stack[stack.length - 1];
+      const left  = Math.max(mover.x, prev.x);
+      const right = Math.min(mover.x + mover.w, prev.x + prev.w);
+      const overlap = right - left;
+
+      if (overlap <= 0) {
+        // Missed entirely
+        gameOver();
+        return;
+      }
+
+      // Perfect precision bonus (within 2px)
+      const isPerfect = Math.abs(mover.x - prev.x) < 2;
+      if (isPerfect) {
+        mover.x = prev.x;
+        mover.w = prev.w;
+        flashMsg('PERFECT ✦');
+      }
+
+      const newBlock = { x: left, w: overlap, y: mover.y };
+      stack.push(newBlock);
+      mover = null;
+      level++;
+      updateHUD();
+
+      if (level > TOTAL_BLOCKS) {
+        win();
+        return;
+      }
+      spawnMover();
+    }
+
+    // ── Win / Game Over ───────────────────────────────────
+    function win() {
+      state = 'won';
+      cancelAnimationFrame(raf);
+      localStorage.setItem('branflakes_code', 'STACK16');
+      document.getElementById('tapHint').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('winScreen').classList.remove('hidden');
+      }, 600);
+    }
+
+    function gameOver() {
+      state = 'over';
+      cancelAnimationFrame(raf);
+      localStorage.setItem('branflakes_lost_at', Date.now().toString());
+      document.getElementById('tapHint').style.opacity = '0';
+      document.getElementById('finalScore').textContent = stack.length - 1;  // -1 for base
+      // Animate mover falling
+      const fallMover = { ...mover };
+      let fallV = 0;
+      function fall() {
+        fallV += 0.7;
+        fallMover.y += fallV;
+        drawScene(fallMover);
+        if (fallMover.y < canvas.height + 100) {
+          requestAnimationFrame(fall);
+        } else {
+          setTimeout(() => {
+            document.getElementById('gameOverScreen').classList.remove('hidden');
+          }, 200);
+        }
+      }
+      mover = null;
+      fall();
+    }
+
+    // ── Game loop ─────────────────────────────────────────
+    function loop() {
+      if (state !== 'playing') return;
+      if (mover) {
+        mover.x += mover.speed;
+        // Bounce off edges
+        if (mover.x + mover.w > W + 40) mover.speed = -Math.abs(mover.speed);
+        if (mover.x < -40)              mover.speed =  Math.abs(mover.speed);
+      }
+      draw();
+      raf = requestAnimationFrame(loop);
+    }
+
+    // ── Drawing ───────────────────────────────────────────
+    function draw() {
+      drawScene(mover);
+    }
+
+    function drawScene(activeMover) {
+      const c = canvas.height;
+      ctx.clearRect(0, 0, W, c);
+
+      // Background gradient
+      const grad = ctx.createLinearGradient(0, 0, 0, c);
+      grad.addColorStop(0, NAVY_DEEP);
+      grad.addColorStop(1, NAVY_MID);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, c);
+
+      // Blueprint grid
+      ctx.strokeStyle = GRID_COLOR;
+      ctx.lineWidth = 1;
+      for (let x = 0; x < W; x += 40)    { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, c); ctx.stroke(); }
+      for (let y = 0; y < c; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+      // Settled stack — scroll into view when blocks go above canvas
+      const topBlock = stack[stack.length - 1];
+      const scrollOffset = topBlock ? Math.min(0, canvas.height - 140 - (topBlock.y + BLOCK_H)) : 0;
+
+      stack.forEach((blk, i) => {
+        const brightness = 0.55 + (i / TOTAL_BLOCKS) * 0.45;
+        drawBlock(blk.x, blk.y + scrollOffset, blk.w, brightness);
+      });
+
+      // Moving block
+      if (activeMover) {
+        drawBlock(activeMover.x, activeMover.y + scrollOffset, activeMover.w, 1);
+        // Ghost / guide line from moving block to stack top
+        if (stack.length > 0) {
+          ctx.setLineDash([4, 6]);
+          ctx.strokeStyle = 'rgba(230,165,67,0.15)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(activeMover.x + activeMover.w / 2, activeMover.y + scrollOffset + BLOCK_H);
+          ctx.lineTo(activeMover.x + activeMover.w / 2, topBlock.y + scrollOffset);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+      }
+
+      // Level markers on the right edge
+      for (let i = 1; i <= TOTAL_BLOCKS; i++) {
+        const markerY = stackBaseY - i * (BLOCK_H + 4) + BLOCK_H / 2 + scrollOffset;
+        if (markerY < 0 || markerY > c) continue;
+        ctx.fillStyle = i < stack.length ? 'rgba(230,165,67,0.5)' : 'rgba(240,244,248,0.12)';
+        ctx.font = '600 9px "Inter Tight"';
+        ctx.textAlign = 'right';
+        ctx.fillText(i, W - 10, markerY + 4);
+      }
+    }
+
+    function drawBlock(x, y, w, brightnessRatio) {
+      const r = 7;
+      // Shadow
+      ctx.shadowColor = 'rgba(0,0,0,0.35)';
+      ctx.shadowBlur  = 10;
+      ctx.shadowOffsetY = 4;
+
+      // Fill gradient
+      const grad = ctx.createLinearGradient(x, y, x, y + BLOCK_H);
+      const base = lerpColor(GOLD, GOLD_LIGHT, brightnessRatio - 0.55);
+      grad.addColorStop(0, base);
+      grad.addColorStop(1, darkenColor(base, 0.15));
+      ctx.fillStyle = grad;
+
+      roundRect(ctx, x, y, w, BLOCK_H, r);
+      ctx.fill();
+
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur  = 0;
+      ctx.shadowOffsetY = 0;
+
+      // Highlight line
+      ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+      ctx.lineWidth   = 1;
+      roundRect(ctx, x + 0.5, y + 0.5, w - 1, BLOCK_H - 1, r);
+      ctx.stroke();
+
+      // Texture lines
+      ctx.strokeStyle = 'rgba(0,0,0,0.08)';
+      ctx.lineWidth   = 1;
+      for (let lx = x + 16; lx < x + w - 8; lx += 16) {
+        ctx.beginPath();
+        ctx.moveTo(lx, y + 5);
+        ctx.lineTo(lx, y + BLOCK_H - 5);
+        ctx.stroke();
+      }
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.arcTo(x + w, y,     x + w, y + r,     r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+      ctx.lineTo(x + r, y + h);
+      ctx.arcTo(x, y + h, x, y + h - r, r);
+      ctx.lineTo(x, y + r);
+      ctx.arcTo(x, y, x + r, y, r);
+      ctx.closePath();
+    }
+
+    // ── HUD ───────────────────────────────────────────────
+    function updateHUD() {
+      document.getElementById('levelDisplay').textContent = Math.max(0, level - 1);
+    }
+
+    // ── Flash message ─────────────────────────────────────
+    let flashTimeout;
+    function flashMsg(msg) {
+      const el = document.getElementById('flashMsg');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(flashTimeout);
+      flashTimeout = setTimeout(() => el.classList.remove('show'), 900);
+    }
+
+    // ── Color helpers ─────────────────────────────────────
+    function lerpColor(a, b, t) {
+      t = Math.max(0, Math.min(1, t));
+      const p = hex2rgb(a), q = hex2rgb(b);
+      return rgb2hex(
+        Math.round(p.r + (q.r - p.r) * t),
+        Math.round(p.g + (q.g - p.g) * t),
+        Math.round(p.b + (q.b - p.b) * t)
+      );
+    }
+    function darkenColor(hex, amt) {
+      const c = hex2rgb(hex);
+      return rgb2hex(Math.round(c.r*(1-amt)), Math.round(c.g*(1-amt)), Math.round(c.b*(1-amt)));
+    }
+    function hex2rgb(h) {
+      const v = parseInt(h.slice(1), 16);
+      return { r: (v>>16)&255, g: (v>>8)&255, b: v&255 };
+    }
+    function rgb2hex(r, g, b) {
+      return '#' + [r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
+    }
+
+    // ── Initial draw ──────────────────────────────────────
+    resize();
+    drawScene(null);
+  })();
+  </script>
+</body>
+</html>

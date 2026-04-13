@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="PaEGIQjoPZwpB7QFbbuxFkOYqCc1IsVrUT8o1kSv7XE" />
   <title>Branflakes — The Foundation of Every Great Project.</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -117,19 +118,9 @@
   ════════════════════════════════════════ -->
   <header class="fixed top-0 left-0 right-0 z-50 header-blur border-b border-black/[0.06]">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 h-[60px] flex items-center justify-between">
-      <!-- Logo mark + wordmark (SVG, no image dependency) -->
+      <!-- Logo mark + wordmark -->
       <a href="index.html" class="flex items-center gap-2.5 shrink-0">
-        <svg width="28" height="28" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="16,1 21.5,9 16,12.5 10.5,9"       fill="#0A84FF"/>
-          <polygon points="31,16 23,11.5 19.5,16 23,20.5"    fill="#0A84FF"/>
-          <polygon points="16,31 10.5,23 16,19.5 21.5,23"    fill="#0A84FF"/>
-          <polygon points="1,16 9,11.5 12.5,16 9,20.5"       fill="#0A84FF"/>
-          <polygon points="21.5,9 23,11.5 19.5,16 16,12.5"   fill="#FF9500"/>
-          <polygon points="23,20.5 21.5,23 16,19.5 19.5,16"  fill="#FF9500"/>
-          <polygon points="10.5,23 9,20.5 12.5,16 16,19.5"   fill="#FF9500"/>
-          <polygon points="9,11.5 10.5,9 16,12.5 12.5,16"    fill="#FF9500"/>
-          <polygon points="12.5,16 16,12.5 19.5,16 16,19.5"  fill="#0A84FF"/>
-        </svg>
+        <img src="brand_assets/Branflakes%20icon.png" alt="" width="28" height="28" class="object-contain" />
         <span class="font-display font-black text-[15px] tracking-[-0.02em] text-sys-dark">BRAN<span class="text-sys-blue">FLAKES</span></span>
       </a>
       <!-- Nav -->
@@ -137,9 +128,9 @@
         <a href="about.html" class="font-display font-semibold text-[13px] tracking-tight text-sys-dark/60 hover:text-sys-dark transition-colors duration-150">
           About Us
         </a>
-        <a href="#" class="font-display font-semibold text-[13px] bg-sys-blue text-white px-5 py-2.5 rounded-full hover:bg-[#0070E0] transition-colors duration-150 hover:shadow-[0_4px_18px_rgba(10,132,255,0.32)] active:scale-[0.97]">
-          Get Started
-        </a>
+        <button onclick="openPricingModal()" class="font-display font-semibold text-[13px] bg-sys-blue text-white px-5 py-2.5 rounded-full hover:bg-[#0070E0] transition-colors duration-150 hover:shadow-[0_4px_18px_rgba(10,132,255,0.32)] active:scale-[0.97]">
+          Place an Order
+        </button>
       </nav>
     </div>
   </header>
@@ -166,11 +157,11 @@
           A high-performance breakfast cereal for designers, agency owners, and high-end creators. Build your morning with intention. Scale your day without compromise.
         </p>
         <div class="afu d4 flex flex-wrap items-center gap-4">
-          <a href="#" class="font-display font-bold text-[15px] bg-sys-dark text-white px-8 py-4 rounded-full hover:bg-[#2C2C2E] transition-colors duration-150 hover:shadow-[0_8px_28px_rgba(28,28,30,0.22)] active:scale-[0.97]">
-            Explore the Framework
-          </a>
-          <a href="#stats" class="font-display font-semibold text-[15px] text-sys-dark/50 hover:text-sys-dark transition-colors duration-150 flex items-center gap-1.5">
-            View principles <span class="text-sys-amber font-bold">↓</span>
+          <button onclick="openPricingModal()" class="font-display font-bold text-[15px] bg-sys-dark text-white px-8 py-4 rounded-full hover:bg-[#2C2C2E] transition-colors duration-150 hover:shadow-[0_8px_28px_rgba(28,28,30,0.22)] active:scale-[0.97]">
+            Place an Order
+          </button>
+          <a href="about.html" class="font-display font-semibold text-[15px] text-sys-dark/50 hover:text-sys-dark transition-colors duration-150 flex items-center gap-1.5">
+            What is Branflakes? <span class="text-sys-amber font-bold">→</span>
           </a>
         </div>
         <p class="afu d5 font-body text-xs text-sys-muted mt-8">
@@ -299,6 +290,37 @@
   </section>
 
   <!-- ═══════════════════════════════════════
+       BOWL LIFESTYLE SHOT
+  ════════════════════════════════════════ -->
+  <section class="relative overflow-hidden bg-sys-dark">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center">
+      <!-- Image fills the left column edge-to-edge -->
+      <div class="relative h-[420px] lg:h-[560px] overflow-hidden">
+        <img
+          src="brand_assets/Branflaks%20cereal%20in%20bowl.png"
+          alt="A white bowl of Branflakes with banana slices, black spoon, and scattered flakes on a clean surface"
+          class="w-full h-full object-cover object-center"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-sys-dark lg:block hidden"></div>
+      </div>
+      <!-- Copy on the right -->
+      <div class="px-8 py-14 lg:pl-16 lg:pr-12 lg:py-0">
+        <p class="font-display font-semibold text-[11px] tracking-[0.2em] text-sys-amber uppercase mb-6">In the Bowl</p>
+        <h2 class="font-display font-black leading-[0.92] tracking-[-0.04em] text-white mb-6"
+            style="font-size: clamp(2rem, 3.5vw, 3.4rem);">
+          Looks like breakfast.<br /><span class="text-sys-amber">Works like fuel.</span>
+        </h2>
+        <p class="font-body text-[16px] text-white/50 leading-[1.72] mb-8 max-w-[360px]">
+          Golden flakes, real crunch, holds in milk. Designed for mornings where the work starts before you leave the table.
+        </p>
+        <button onclick="openPricingModal()" class="font-display font-bold text-[14px] bg-sys-amber text-sys-dark px-7 py-3.5 rounded-full hover:bg-[#E08600] transition-colors duration-150 hover:shadow-[0_8px_28px_rgba(255,149,0,0.38)] active:scale-[0.97]">
+          Order Now
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
        TESTIMONIALS
   ════════════════════════════════════════ -->
   <section class="py-28 px-6 lg:px-12 border-b border-black/[0.06]">
@@ -390,21 +412,7 @@
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[200px] rounded-full bg-sys-amber/8 blur-2xl pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto text-center relative z-10">
-      <!-- SVG mark replaces the gray-box PNG -->
-      <div class="flex justify-center mb-12">
-        <svg width="48" height="48" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="opacity-60">
-          <polygon points="16,1 21.5,9 16,12.5 10.5,9"       fill="#0A84FF"/>
-          <polygon points="31,16 23,11.5 19.5,16 23,20.5"    fill="#0A84FF"/>
-          <polygon points="16,31 10.5,23 16,19.5 21.5,23"    fill="#0A84FF"/>
-          <polygon points="1,16 9,11.5 12.5,16 9,20.5"       fill="#0A84FF"/>
-          <polygon points="21.5,9 23,11.5 19.5,16 16,12.5"   fill="#FF9500"/>
-          <polygon points="23,20.5 21.5,23 16,19.5 19.5,16"  fill="#FF9500"/>
-          <polygon points="10.5,23 9,20.5 12.5,16 16,19.5"   fill="#FF9500"/>
-          <polygon points="9,11.5 10.5,9 16,12.5 12.5,16"    fill="#FF9500"/>
-          <polygon points="12.5,16 16,12.5 19.5,16 16,19.5"  fill="#0A84FF"/>
-        </svg>
-      </div>
-      <h2 class="font-display font-black leading-[0.9] tracking-[-0.04em] text-white mb-6"
+      <h2 class="font-display font-black leading-[1.05] tracking-[-0.04em] text-white mb-6"
           style="font-size: clamp(3rem, 7vw, 6.5rem);">
         Start your morning<br /><span class="text-sys-amber">with intention.</span>
       </h2>
@@ -413,9 +421,9 @@
       </p>
       <!-- Two CTA buttons -->
       <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="#" class="font-display font-bold text-[15px] bg-sys-amber text-sys-dark px-10 py-4 rounded-full hover:bg-[#E08600] transition-colors duration-150 hover:shadow-[0_8px_28px_rgba(255,149,0,0.38)] active:scale-[0.97]">
+        <button onclick="openPricingModal()" class="font-display font-bold text-[15px] bg-sys-amber text-sys-dark px-10 py-4 rounded-full hover:bg-[#E08600] transition-colors duration-150 hover:shadow-[0_8px_28px_rgba(255,149,0,0.38)] active:scale-[0.97]">
           Order Your First Box
-        </a>
+        </button>
         <a href="about.html" class="font-display font-semibold text-[15px] text-white/50 hover:text-white transition-colors duration-150 flex items-center gap-1.5">
           Our Story <span class="text-sys-amber">→</span>
         </a>
@@ -426,16 +434,212 @@
   <!-- ═══════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <footer class="py-7 px-6 lg:px-12 bg-[#111113] border-t border-white/[0.04]">
+  <footer class="py-8 px-6 lg:px-12 bg-[#111113] border-t border-white/[0.04]">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <p class="font-body text-[11px] text-white/25">© 2026 Branflakes, Inc. All rights reserved. An actual cereal.</p>
+      <p class="font-body text-[13px] text-white/30">© 2026 Branflakes, Inc. All rights reserved. An actual cereal.</p>
       <div class="flex items-center gap-6">
-        <a href="about.html" class="font-display font-medium text-[11px] text-white/25 hover:text-white/50 transition-colors duration-150">About Us</a>
+        <a href="about.html" class="font-display font-medium text-[13px] text-white/30 hover:text-white/60 transition-colors duration-150">About Us</a>
         <span class="text-white/10">·</span>
-        <a href="#" class="font-display font-medium text-[11px] text-white/25 hover:text-white/50 transition-colors duration-150">Privacy</a>
+        <a href="privacy.html" class="font-display font-medium text-[13px] text-white/30 hover:text-white/60 transition-colors duration-150">Privacy</a>
       </div>
     </div>
   </footer>
+
+  <!-- ═══════════════════════════════════════
+       PRICING MODAL
+  ════════════════════════════════════════ -->
+  <div id="pricingModal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 pointer-events-none opacity-0" style="transition: opacity 0.25s ease;">
+    <!-- Backdrop -->
+    <div id="modalBackdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closePricingModal()"></div>
+    <!-- Modal panel -->
+    <div class="relative z-10 bg-sys-surface w-full max-w-[700px] rounded-3xl overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.28)]"
+         style="transform: translateY(24px); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);" id="modalPanel">
+      <!-- Header -->
+      <div class="px-8 pt-8 pb-6 border-b border-black/[0.07]">
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-display font-semibold text-[11px] tracking-[0.2em] text-sys-muted uppercase mb-2">Order Branflakes</p>
+            <h3 class="font-display font-black text-[1.75rem] leading-tight tracking-[-0.03em] text-sys-dark">Choose your plan.</h3>
+          </div>
+          <button onclick="closePricingModal()" class="text-sys-muted hover:text-sys-dark transition-colors duration-150 mt-1 p-1 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sys-blue" aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <!-- Discount banner if STACK16 earned -->
+        <div id="discountBanner" class="hidden mt-4 flex items-center gap-2.5 bg-sys-amber/10 border border-sys-amber/25 rounded-xl px-4 py-2.5">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2" stroke-linecap="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          <p class="font-display font-semibold text-[13px] text-sys-dark">Code <span class="text-sys-amber font-black">STACK16</span> applied — 16.7% off both plans!</p>
+        </div>
+      </div>
+
+      <!-- Plans grid -->
+      <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- One-time -->
+        <div class="bg-white rounded-2xl p-6 border border-black/[0.08] flex flex-col gap-5">
+          <div>
+            <p class="font-display font-semibold text-[11px] tracking-[0.16em] text-sys-muted uppercase mb-2">One-Time Purchase</p>
+            <p class="font-display font-black text-[2rem] leading-none tracking-tight text-sys-dark" id="oneTimePrice">$18</p>
+            <p class="font-body text-[13px] text-sys-muted mt-1">per box · no commitment</p>
+          </div>
+          <ul class="flex flex-col gap-2.5 flex-1">
+            <li class="flex items-start gap-2 font-body text-[13px] text-sys-dark/75"><span class="text-sys-blue font-bold mt-0.5">✓</span> One 16oz box of Branflakes</li>
+            <li class="flex items-start gap-2 font-body text-[13px] text-sys-dark/75"><span class="text-sys-blue font-bold mt-0.5">✓</span> Ships in 2–3 business days</li>
+            <li class="flex items-start gap-2 font-body text-[13px] text-sys-dark/75"><span class="text-sys-blue font-bold mt-0.5">✓</span> Free shipping on 3+ boxes</li>
+          </ul>
+          <div class="flex flex-col gap-2.5">
+            <div class="flex gap-2">
+              <button onclick="selectQty(1)" id="qty1" class="qty-btn flex-1 font-display font-semibold text-[12px] py-2 rounded-lg border border-black/10 hover:border-sys-blue hover:text-sys-blue transition-colors duration-150">1 box</button>
+              <button onclick="selectQty(2)" id="qty2" class="qty-btn flex-1 font-display font-semibold text-[12px] py-2 rounded-lg border border-black/10 hover:border-sys-blue hover:text-sys-blue transition-colors duration-150">2 boxes</button>
+              <button onclick="selectQty(3)" id="qty3" class="qty-btn flex-1 font-display font-semibold text-[12px] py-2 rounded-lg border border-black/10 hover:border-sys-blue hover:text-sys-blue transition-colors duration-150">3 boxes</button>
+            </div>
+            <button class="w-full font-display font-bold text-[14px] bg-sys-dark text-white py-3.5 rounded-xl hover:bg-[#2C2C2E] transition-colors duration-150 hover:shadow-[0_6px_20px_rgba(28,28,30,0.22)] active:scale-[0.97]">
+              Buy Now
+            </button>
+          </div>
+        </div>
+
+        <!-- Subscription — best value -->
+        <div class="bg-sys-dark rounded-2xl p-6 flex flex-col gap-5 relative overflow-hidden">
+          <div class="absolute top-4 right-4 bg-sys-amber text-sys-dark font-display font-black text-[10px] tracking-[0.12em] uppercase px-3 py-1 rounded-full">Best Value</div>
+          <div>
+            <p class="font-display font-semibold text-[11px] tracking-[0.16em] text-white/40 uppercase mb-2">Monthly Subscription</p>
+            <p class="font-display font-black text-[2rem] leading-none tracking-tight text-white" id="subPrice">$15</p>
+            <p class="font-body text-[13px] text-white/40 mt-1">per box / month · cancel anytime</p>
+            <p class="font-body text-[12px] text-sys-amber mt-1.5" id="savingsLabel">Save $3/mo vs. one-time</p>
+          </div>
+          <ul class="flex flex-col gap-2.5 flex-1">
+            <li class="flex items-start gap-2 font-body text-[13px] text-white/75"><span class="text-sys-amber font-bold mt-0.5">✓</span> One 16oz box every month</li>
+            <li class="flex items-start gap-2 font-body text-[13px] text-white/75"><span class="text-sys-amber font-bold mt-0.5">✓</span> Priority shipping, always first</li>
+            <li class="flex items-start gap-2 font-body text-[13px] text-white/75"><span class="text-sys-amber font-bold mt-0.5">✓</span> Free shipping, every order</li>
+            <li class="flex items-start gap-2 font-body text-[13px] text-white/75"><span class="text-sys-amber font-bold mt-0.5">✓</span> Pause or cancel any time</li>
+          </ul>
+          <button class="w-full font-display font-bold text-[14px] bg-sys-amber text-sys-dark py-3.5 rounded-xl hover:bg-[#E08600] transition-colors duration-150 hover:shadow-[0_6px_20px_rgba(255,149,0,0.38)] active:scale-[0.97]">
+            Subscribe & Save
+          </button>
+        </div>
+      </div>
+      <p class="text-center font-body text-[11px] text-sys-muted pb-5">Secure checkout · Free returns · Shipped from San Francisco</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       GAME POPUP (15-second delay)
+  ════════════════════════════════════════ -->
+  <div id="gamePopup" class="fixed bottom-6 right-6 z-[300] pointer-events-none opacity-0 translate-y-4"
+       style="transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1); max-width: 320px;">
+    <div class="bg-sys-dark rounded-2xl p-5 shadow-[0_20px_60px_rgba(0,0,0,0.4)] border border-white/[0.07]">
+      <button onclick="dismissGamePopup()" class="absolute top-3 right-3 text-white/30 hover:text-white/60 transition-colors duration-150 p-1" aria-label="Dismiss">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="flex items-start gap-3 mb-3">
+        <div class="w-9 h-9 rounded-xl bg-sys-amber/15 flex items-center justify-center shrink-0 text-lg">🎮</div>
+        <div>
+          <p class="font-display font-black text-[15px] tracking-tight text-white leading-tight">Play for 16.7% off</p>
+          <p class="font-body text-[12px] text-white/45 mt-0.5 leading-relaxed">Stack 10 blocks. Win a discount code for your first box.</p>
+        </div>
+      </div>
+      <a href="game.html" onclick="dismissGamePopup()" class="block w-full font-display font-bold text-[13px] text-center bg-sys-amber text-sys-dark py-2.5 rounded-xl hover:bg-[#E08600] transition-colors duration-150 active:scale-[0.97]">
+        Play The Stack →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // ── Pricing logic ──────────────────────────────────────
+    const BASE_ONCE = [18, 32, 45];
+    const BASE_SUB  = 15;
+    const DISCOUNT  = 0.167;
+    let currentQty  = 1;
+    let hasDiscount = false;
+
+    function openPricingModal() {
+      hasDiscount = localStorage.getItem('branflakes_code') === 'STACK16';
+      updatePricing();
+
+      const modal   = document.getElementById('pricingModal');
+      const panel   = document.getElementById('modalPanel');
+      const banner  = document.getElementById('discountBanner');
+
+      banner.classList.toggle('hidden', !hasDiscount);
+      banner.classList.toggle('flex',   hasDiscount);
+
+      modal.style.pointerEvents = 'all';
+      modal.style.opacity       = '1';
+      panel.style.transform     = 'translateY(0)';
+      document.body.style.overflow = 'hidden';
+      selectQty(1);
+    }
+
+    function closePricingModal() {
+      const modal = document.getElementById('pricingModal');
+      const panel = document.getElementById('modalPanel');
+      modal.style.opacity       = '0';
+      modal.style.pointerEvents = 'none';
+      panel.style.transform     = 'translateY(24px)';
+      document.body.style.overflow = '';
+    }
+
+    function selectQty(n) {
+      currentQty = n;
+      document.querySelectorAll('.qty-btn').forEach((btn, i) => {
+        const active = i + 1 === n;
+        btn.classList.toggle('border-sys-blue',   active);
+        btn.classList.toggle('text-sys-blue',     active);
+        btn.classList.toggle('font-black',        active);
+        btn.classList.toggle('border-black/10',   !active);
+      });
+      updatePricing();
+    }
+
+    function updatePricing() {
+      const rawOnce = BASE_ONCE[currentQty - 1];
+      const rawSub  = BASE_SUB;
+      const once = hasDiscount ? Math.round(rawOnce * (1 - DISCOUNT)) : rawOnce;
+      const sub  = hasDiscount ? Math.round(rawSub  * (1 - DISCOUNT)) : rawSub;
+      const savings = once - sub;
+
+      document.getElementById('oneTimePrice').textContent = '$' + once + (currentQty > 1 ? ' total' : '');
+      document.getElementById('subPrice').textContent     = '$' + sub;
+      document.getElementById('savingsLabel').textContent = 'Save $' + savings + '/mo vs. one-time';
+    }
+
+    // Close on Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closePricingModal();
+    });
+
+    // ── 15-second game popup ───────────────────────────────
+    function showGamePopup() {
+      // Only show if they haven't already won the game
+      if (localStorage.getItem('branflakes_code') === 'STACK16') return;
+      // Only show once per session
+      if (sessionStorage.getItem('popupShown')) return;
+      sessionStorage.setItem('popupShown', '1');
+
+      const popup = document.getElementById('gamePopup');
+      popup.style.pointerEvents = 'all';
+      popup.style.opacity       = '1';
+      popup.style.transform     = 'translateY(0)';
+    }
+
+    function dismissGamePopup() {
+      const popup = document.getElementById('gamePopup');
+      popup.style.opacity       = '0';
+      popup.style.transform     = 'translateY(4px)';
+      popup.style.pointerEvents = 'none';
+    }
+
+    setTimeout(showGamePopup, 15000);
+
+    // ── Auto-open modal if arriving from game win ──────────
+    if (new URLSearchParams(window.location.search).get('order') === '1') {
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(openPricingModal, 400);
+      });
+      // Also fire immediately if DOM already ready
+      if (document.readyState !== 'loading') setTimeout(openPricingModal, 400);
+    }
+  </script>
 
 </body>
 </html>

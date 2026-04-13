@@ -70,7 +70,7 @@
     .step-num {
       font-family: 'Inter Tight', sans-serif;
       font-weight: 800;
-      font-size: 0.65rem;
+      font-size: 0.8rem;
       letter-spacing: 0.18em;
       color: var(--color-text-muted);
     }
@@ -92,25 +92,15 @@
   <header class="fixed top-0 left-0 right-0 z-50 header-blur border-b border-black/[0.06]">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 h-[60px] flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-2.5 shrink-0">
-        <svg width="28" height="28" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="16,1 21.5,9 16,12.5 10.5,9"       fill="#0A84FF"/>
-          <polygon points="31,16 23,11.5 19.5,16 23,20.5"    fill="#0A84FF"/>
-          <polygon points="16,31 10.5,23 16,19.5 21.5,23"    fill="#0A84FF"/>
-          <polygon points="1,16 9,11.5 12.5,16 9,20.5"       fill="#0A84FF"/>
-          <polygon points="21.5,9 23,11.5 19.5,16 16,12.5"   fill="#FF9500"/>
-          <polygon points="23,20.5 21.5,23 16,19.5 19.5,16"  fill="#FF9500"/>
-          <polygon points="10.5,23 9,20.5 12.5,16 16,19.5"   fill="#FF9500"/>
-          <polygon points="9,11.5 10.5,9 16,12.5 12.5,16"    fill="#FF9500"/>
-          <polygon points="12.5,16 16,12.5 19.5,16 16,19.5"  fill="#0A84FF"/>
-        </svg>
+        <img src="brand_assets/Branflakes%20icon.png" alt="" width="28" height="28" class="object-contain" />
         <span class="font-display font-black text-[15px] tracking-[-0.02em] text-sys-dark">BRAN<span class="text-sys-blue">FLAKES</span></span>
       </a>
       <nav class="flex items-center gap-7">
         <a href="about.html" class="font-display font-semibold text-[13px] tracking-tight text-sys-dark transition-colors duration-150">
           About Us
         </a>
-        <a href="index.html" class="font-display font-semibold text-[13px] bg-sys-blue text-white px-5 py-2.5 rounded-full hover:bg-[#0070E0] transition-colors duration-150 hover:shadow-[0_4px_18px_rgba(10,132,255,0.32)] active:scale-[0.97]">
-          Get Started
+        <a href="index.html?order=1" class="font-display font-semibold text-[13px] bg-sys-blue text-white px-5 py-2.5 rounded-full hover:bg-[#0070E0] transition-colors duration-150 hover:shadow-[0_4px_18px_rgba(10,132,255,0.32)] active:scale-[0.97]">
+          Place an Order
         </a>
       </nav>
     </div>
@@ -164,32 +154,32 @@
             <div class="flex gap-5 p-6 bg-white/50 border-b border-black/[0.06]">
               <span class="step-num mt-0.5 shrink-0">01</span>
               <div>
-                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Install the Claude Code Extension in VS Code</p>
-                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Added the Claude Code extension directly inside Visual Studio Code. This brings the AI into the same environment where the code lives — no context switching, no copy-pasting between windows. The editor and the assistant become one interface.</p>
+                <p class="font-display font-bold text-[16px] text-sys-dark mb-2">Install the Claude Code Extension in VS Code</p>
+                <p class="font-body text-[15px] text-sys-muted leading-relaxed">Added the Claude Code extension directly inside Visual Studio Code. This brings the AI into the same environment where the code lives — no context switching, no copy-pasting between windows. The editor and the assistant become one interface.</p>
               </div>
             </div>
 
             <div class="flex gap-5 p-6 bg-white/50 border-b border-black/[0.06]">
               <span class="step-num mt-0.5 shrink-0">02</span>
               <div>
-                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Create Markdown Skill &amp; Config Files</p>
-                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Created a set of <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">.md</code> files to give Claude structured, persistent instructions. A <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">CLAUDE.md</code> held the brand rules, design constraints, and hard guardrails. Separate skill files defined specific AI behaviors — for example, a <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">frontend-design</code> skill enforcing high-craft UI standards, a <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">commit</code> skill for consistent git messages, and a <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">simplify</code> skill for reviewing and cleaning generated code.</p>
+                <p class="font-display font-bold text-[16px] text-sys-dark mb-2">Create Markdown Skill &amp; Config Files</p>
+                <p class="font-body text-[15px] text-sys-muted leading-relaxed">Created a set of <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">.md</code> files to give Claude structured, persistent instructions. A <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">CLAUDE.md</code> held the brand rules, design constraints, and hard guardrails. Separate skill files defined specific AI behaviors — for example, a <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">frontend-design</code> skill enforcing high-craft UI standards, a <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">commit</code> skill for consistent git messages, and a <code class="font-mono text-[12px] bg-black/5 px-1.5 py-0.5 rounded">simplify</code> skill for reviewing and cleaning generated code.</p>
               </div>
             </div>
 
             <div class="flex gap-5 p-6 bg-white/50 border-b border-black/[0.06]">
               <span class="step-num mt-0.5 shrink-0">03</span>
               <div>
-                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">Write Detailed Prompts</p>
-                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Wrote precise, intentional prompts for every section of the site — specifying the layout, the audience, the tone, the sections, the copy direction, and the visual treatment. The quality of the output is directly tied to the specificity of the input. Vague prompts produce vague results. A detailed brief produces production-ready code.</p>
+                <p class="font-display font-bold text-[16px] text-sys-dark mb-2">Write Detailed Prompts</p>
+                <p class="font-body text-[15px] text-sys-muted leading-relaxed">Wrote precise, intentional prompts for every section of the site — specifying the layout, the audience, the tone, the sections, the copy direction, and the visual treatment. The quality of the output is directly tied to the specificity of the input. Vague prompts produce vague results. A detailed brief produces production-ready code.</p>
               </div>
             </div>
 
             <div class="flex gap-5 p-6 bg-white/50">
               <span class="step-num mt-0.5 shrink-0">04</span>
               <div>
-                <p class="font-display font-bold text-[14px] text-sys-dark mb-1">GitHub Repository &amp; Vercel Deployment</p>
-                <p class="font-body text-[13px] text-sys-muted leading-relaxed">Once the site was built, initialized a GitHub repository and pushed the project directly from VS Code. Connected the repo to <span class="text-sys-dark font-medium">Vercel</span> for automatic deployment — taking the site from local files to a live public URL in under five minutes. Every subsequent push triggers a new deploy automatically.</p>
+                <p class="font-display font-bold text-[16px] text-sys-dark mb-2">GitHub Repository &amp; Vercel Deployment</p>
+                <p class="font-body text-[15px] text-sys-muted leading-relaxed">Once the site was built, initialized a GitHub repository and pushed the project directly from VS Code. Connected the repo to <span class="text-sys-dark font-medium">Vercel</span> for automatic deployment — taking the site from local files to a live public URL in under five minutes. Every subsequent push triggers a new deploy automatically.</p>
               </div>
             </div>
 
@@ -198,7 +188,7 @@
           <!-- Tool callout -->
           <div class="mt-8 p-6 border border-sys-blue/20 rounded-2xl bg-sys-blue/[0.04]">
             <p class="font-display font-bold text-[13px] text-sys-blue mb-2">Built with Claude Code in VS Code</p>
-            <p class="font-body text-[13px] text-sys-muted leading-relaxed">
+            <p class="font-body text-[15px] text-sys-muted leading-relaxed">
               Claude Code is Anthropic's official AI coding assistant, available as a VS Code extension. This entire project — architecture, implementation, copy, iteration, and git workflow — was executed through a single conversational session inside the editor. No IDE switching. No context loss. One interface, end to end.
             </p>
           </div>
@@ -228,32 +218,24 @@
 
           <div class="font-body text-[17px] text-sys-dark/80 leading-[1.75] space-y-6">
             <p>
-              Branflakes was the founder Branden's middle school nickname — a dietary pun that stuck longer than it should have. It was shelved for a decade, then deliberately resurrected as a conceptual brand: a vehicle for applying serious craft to an absurd premise, and a study in what emerges when aesthetic rigor meets an unconstrained brief.
+              Branflakes was a middle school nickname that is now a conceptual brand.
             </p>
             <p class="text-sys-muted">
-              The brand is the project. The project is the practice. Branflakes exists to demonstrate that great design is a function of discipline and intent — regardless of the subject matter it's applied to.
+              AI is completely redefining what is possible. I enjoyed bringing this 'mock' brand to life. I'm excited for all the new skills I'll get to practice as I add them to my workflow.
             </p>
           </div>
 
           <!-- Founder card -->
-          <div class="mt-12 flex items-center gap-5 p-6 bg-white/60 border border-black/[0.06] rounded-2xl">
-            <svg width="44" height="44" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="shrink-0">
-              <polygon points="16,1 21.5,9 16,12.5 10.5,9"       fill="#0A84FF"/>
-              <polygon points="31,16 23,11.5 19.5,16 23,20.5"    fill="#0A84FF"/>
-              <polygon points="16,31 10.5,23 16,19.5 21.5,23"    fill="#0A84FF"/>
-              <polygon points="1,16 9,11.5 12.5,16 9,20.5"       fill="#0A84FF"/>
-              <polygon points="21.5,9 23,11.5 19.5,16 16,12.5"   fill="#FF9500"/>
-              <polygon points="23,20.5 21.5,23 16,19.5 19.5,16"  fill="#FF9500"/>
-              <polygon points="10.5,23 9,20.5 12.5,16 16,19.5"   fill="#FF9500"/>
-              <polygon points="9,11.5 10.5,9 16,12.5 12.5,16"    fill="#FF9500"/>
-              <polygon points="12.5,16 16,12.5 19.5,16 16,19.5"  fill="#0A84FF"/>
-            </svg>
-            <div>
-              <p class="font-display font-bold text-[14px] text-sys-dark">Branden Korf</p>
+          <a href="https://www.linkedin.com/in/branden-korf/" target="_blank" rel="noopener"
+             class="mt-12 flex items-center gap-5 p-6 bg-white/60 border border-black/[0.06] rounded-2xl hover:bg-white/80 hover:border-black/10 transition-colors duration-150 group">
+            <img src="brand_assets/Branflakes%20icon.png" alt="" width="44" height="44" class="object-contain shrink-0" />
+            <div class="flex-1">
+              <p class="font-display font-bold text-[15px] text-sys-dark">Branden Korf</p>
               <p class="font-body text-[13px] text-sys-muted">Founder, Branflakes</p>
               <p class="font-body text-[12px] text-sys-blue mt-0.5">Designer · Developer · Creative Architect</p>
             </div>
-          </div>
+            <svg class="text-sys-muted/40 group-hover:text-sys-blue transition-colors duration-150 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
         </div>
       </div>
 
@@ -273,14 +255,9 @@
           <p class="font-body text-[16px] text-sys-muted leading-[1.75] mb-8">
             Branflakes is a framework for creators who refuse to compromise on craft. If that's you, the foundation is ready.
           </p>
-          <div class="flex flex-wrap gap-4">
-            <a href="index.html" class="font-display font-bold text-[14px] bg-sys-dark text-white px-7 py-3.5 rounded-full hover:bg-[#2C2C2E] transition-colors duration-150 hover:shadow-[0_6px_24px_rgba(28,28,30,0.2)] active:scale-[0.97]">
-              Explore the Framework
-            </a>
-            <a href="index.html" class="font-display font-semibold text-[14px] text-sys-dark/50 hover:text-sys-dark transition-colors duration-150 flex items-center gap-1.5">
-              ← Back to Home
-            </a>
-          </div>
+          <a href="index.html?order=1" class="inline-block font-display font-bold text-[15px] bg-sys-amber text-sys-dark px-9 py-4 rounded-full hover:bg-[#E08600] transition-colors duration-150 hover:shadow-[0_8px_28px_rgba(255,149,0,0.38)] active:scale-[0.97]">
+            Place an Order
+          </a>
         </div>
       </div>
     </div>
@@ -289,13 +266,13 @@
   <!-- ═══════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <footer class="py-7 px-6 lg:px-12 bg-sys-dark border-t border-white/[0.04]">
+  <footer class="py-8 px-6 lg:px-12 bg-sys-dark border-t border-white/[0.04]">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <p class="font-body text-[11px] text-white/25">© 2026 Branflakes, Inc. All rights reserved. Not actual cereal.</p>
+      <p class="font-body text-[13px] text-white/30">© 2026 Branflakes, Inc. All rights reserved. Not actual cereal.</p>
       <div class="flex items-center gap-6">
-        <a href="index.html" class="font-display font-medium text-[11px] text-white/25 hover:text-white/50 transition-colors duration-150">Home</a>
+        <a href="index.html" class="font-display font-medium text-[13px] text-white/30 hover:text-white/60 transition-colors duration-150">Home</a>
         <span class="text-white/10">·</span>
-        <a href="#" class="font-display font-medium text-[11px] text-white/25 hover:text-white/50 transition-colors duration-150">Privacy</a>
+        <a href="privacy.html" class="font-display font-medium text-[13px] text-white/30 hover:text-white/60 transition-colors duration-150">Privacy</a>
       </div>
     </div>
   </footer>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Branflakes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sys-blue':    '#0A84FF',
+            'sys-amber':   '#FF9500',
+            'sys-surface': '#F2F2F7',
+            'sys-dark':    '#1C1C1E',
+            'sys-muted':   '#8E8E93',
+          },
+          fontFamily: {
+            display: ['"Inter Tight"', 'sans-serif'],
+            body:    ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .header-blur {
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background-color: rgba(242, 242, 247, 0.85);
+    }
+    a:focus-visible { outline: 2px solid #0A84FF; outline-offset: 3px; border-radius: 4px; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #F2F2F7; }
+    ::-webkit-scrollbar-thumb { background: #8E8E93; border-radius: 2px; }
+    .prose h2 {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: #1C1C1E;
+      margin-top: 2.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .prose p, .prose li {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      color: rgba(28,28,30,0.7);
+      line-height: 1.78;
+    }
+    .prose ul {
+      list-style: none;
+      padding: 0;
+    }
+    .prose ul li::before {
+      content: '—';
+      margin-right: 0.5rem;
+      color: #8E8E93;
+    }
+    .prose ul li {
+      margin-bottom: 0.35rem;
+    }
+    .prose a {
+      color: #0A84FF;
+      text-decoration: none;
+    }
+    .prose a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-sys-surface text-sys-dark font-body antialiased">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 header-blur border-b border-black/[0.06]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 h-[60px] flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5 shrink-0">
+        <img src="brand_assets/Branflakes%20icon.png" alt="" width="28" height="28" class="object-contain" />
+        <span class="font-display font-black text-[15px] tracking-[-0.02em] text-sys-dark">BRAN<span class="text-sys-blue">FLAKES</span></span>
+      </a>
+      <nav class="flex items-center gap-7">
+        <a href="about.html" class="font-display font-semibold text-[13px] tracking-tight text-sys-dark/60 hover:text-sys-dark transition-colors duration-150">
+          About Us
+        </a>
+        <a href="index.html?order=1" class="font-display font-semibold text-[13px] bg-sys-blue text-white px-5 py-2.5 rounded-full hover:bg-[#0070E0] transition-colors duration-150 hover:shadow-[0_4px_18px_rgba(10,132,255,0.32)] active:scale-[0.97]">
+          Place an Order
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="pt-[60px]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+      <!-- Page header -->
+      <div class="py-14 lg:py-20 border-b border-black/[0.07]">
+        <p class="font-display font-semibold text-[11px] tracking-[0.2em] text-sys-blue uppercase mb-6">Legal</p>
+        <h1 class="font-display font-black leading-[0.9] tracking-[-0.04em] text-sys-dark"
+            style="font-size: clamp(3rem, 6vw, 5.5rem);">
+          Privacy Policy<span class="text-sys-amber">.</span>
+        </h1>
+        <p class="font-body text-[14px] text-sys-muted mt-5">Last updated: April 12, 2026</p>
+      </div>
+
+      <!-- Body -->
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 py-20 lg:py-28 border-b border-black/[0.07]">
+        <div>
+          <p class="font-display font-semibold text-[11px] tracking-[0.2em] text-sys-muted uppercase sticky top-[80px]">
+            Privacy
+          </p>
+        </div>
+
+        <div class="max-w-[640px] prose">
+
+          <p>
+            Branflakes ("we," "us," or "our") is a conceptual brand and demonstration project operated by Branden Korf. This Privacy Policy explains how we handle information when you visit this website.
+          </p>
+
+          <h2>Information We Collect</h2>
+          <p>We do not collect personal information directly. However, third-party services used on this site may collect certain data automatically:</p>
+          <ul>
+            <li>Google Search Console may collect anonymized search and indexing data associated with this domain.</li>
+            <li>Vercel (our hosting provider) may log standard server request data such as IP addresses and browser types.</li>
+            <li>Your browser's <code style="font-family:monospace;font-size:13px;background:rgba(0,0,0,0.05);padding:2px 6px;border-radius:4px;">localStorage</code> is used to save your game progress and any discount code you earn on this site. This data stays on your device and is never transmitted to us.</li>
+          </ul>
+
+          <h2>How We Use Information</h2>
+          <p>This site is a portfolio and demonstration project. We do not sell products, process payments, or collect contact details. No personal information is stored on our servers.</p>
+
+          <h2>Cookies</h2>
+          <p>This site does not use tracking cookies. We use <code style="font-family:monospace;font-size:13px;background:rgba(0,0,0,0.05);padding:2px 6px;border-radius:4px;">localStorage</code> and <code style="font-family:monospace;font-size:13px;background:rgba(0,0,0,0.05);padding:2px 6px;border-radius:4px;">sessionStorage</code> only for functional purposes (game state, discount codes, popup timing). You can clear this data at any time by clearing your browser's site data.</p>
+
+          <h2>Third-Party Services</h2>
+          <p>This site uses the following external services, each with their own privacy policies:</p>
+          <ul>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a> — site verification and search indexing</li>
+            <li><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Vercel</a> — hosting and deployment</li>
+            <li><a href="https://fonts.google.com" target="_blank" rel="noopener">Google Fonts</a> — typography (loaded from Google's CDN)</li>
+          </ul>
+
+          <h2>Children's Privacy</h2>
+          <p>This site is not directed at children under 13. We do not knowingly collect any information from children.</p>
+
+          <h2>Changes to This Policy</h2>
+          <p>We may update this policy occasionally. Changes will be reflected with an updated date at the top of this page.</p>
+
+          <h2>Contact</h2>
+          <p>
+            Questions? Reach out via
+            <a href="https://www.linkedin.com/in/branden-korf/" target="_blank" rel="noopener">LinkedIn</a>.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-8 px-6 lg:px-12 bg-[#111113] border-t border-white/[0.04]">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <p class="font-body text-[13px] text-white/30">© 2026 Branflakes, Inc. All rights reserved. An actual cereal.</p>
+      <div class="flex items-center gap-6">
+        <a href="about.html" class="font-display font-medium text-[13px] text-white/30 hover:text-white/60 transition-colors duration-150">About Us</a>
+        <span class="text-white/10">·</span>
+        <a href="privacy.html" class="font-display font-medium text-[13px] text-white/30 hover:text-white/60 transition-colors duration-150">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
