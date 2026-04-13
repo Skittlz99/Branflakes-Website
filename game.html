@@ -303,11 +303,11 @@
     <a href="index.html" class="btn-ghost">Back to site</a>
   </div>
 
-  <!-- ── Already won screen (coupon mode, 18hr lock) ── -->
+  <!-- ── Cooldown screen (coupon mode, 18hr lock on win OR loss) ── -->
   <div id="cooldownScreen" class="screen hidden">
-    <p class="screen-eyebrow">Already earned.</p>
-    <h1 class="screen-title">You've got<br /><span style="color:var(--gold)">the code.</span></h1>
-    <p class="screen-sub" id="cooldownMsg">Use STACK16 at checkout for 16.7% off your first box.</p>
+    <p class="screen-eyebrow" id="cooldownEyebrow">Come back tomorrow.</p>
+    <h1 class="screen-title" id="cooldownTitle">One shot<br /><span style="color:var(--gold)">per day.</span></h1>
+    <p class="screen-sub" id="cooldownMsg">You already played today. Come back in 18 hours for another shot at the code.</p>
     <div class="code-box" style="margin-bottom:24px;">
       <p class="code-label">Your discount code</p>
       <p class="code-value">STACK16</p>
@@ -399,20 +399,29 @@
     const FUN_MODE = new URLSearchParams(window.location.search).get('fun') === '1';
     const COOLDOWN_MS = 18 * 60 * 60 * 1000;
 
-    function checkAlreadyWon() {
+    function checkCooldown() {
       if (FUN_MODE) return false;
-      const wonAt = parseInt(localStorage.getItem('branflakes_won_at') || '0', 10);
-      if (!wonAt) return false;
-      const elapsed = Date.now() - wonAt;
+      const playedAt = parseInt(localStorage.getItem('branflakes_won_at') || '0', 10);
+      if (!playedAt) return false;
+      const elapsed = Date.now() - playedAt;
       if (elapsed < COOLDOWN_MS) {
         const remaining = COOLDOWN_MS - elapsed;
         const hrs  = Math.floor(remaining / 3_600_000);
         const mins = Math.floor((remaining % 3_600_000) / 60_000);
-        document.getElementById('cooldownMsg').textContent =
-          `Use STACK16 at checkout for 16.7% off. You can earn a new code in ${hrs}h ${mins}m.`;
+        const hasCode = localStorage.getItem('branflakes_code') === 'STACK16';
+        if (hasCode) {
+          document.getElementById('cooldownEyebrow').textContent = 'Already earned.';
+          document.getElementById('cooldownTitle').innerHTML = "You've got<br /><span style=\"color:var(--gold)\">the code.</span>";
+          document.getElementById('cooldownMsg').textContent =
+            `Use STACK16 at checkout for 16.7% off. You can play again in ${hrs}h ${mins}m.`;
+          document.querySelector('#cooldownScreen .code-box').style.display = '';
+        } else {
+          document.getElementById('cooldownMsg').textContent =
+            `You already played today. Come back in ${hrs}h ${mins}m for another shot.`;
+          document.querySelector('#cooldownScreen .code-box').style.display = 'none';
+        }
         return true;
       }
-      // Cooldown expired — let them play for a new code
       localStorage.removeItem('branflakes_won_at');
       localStorage.removeItem('branflakes_code');
       return false;
@@ -423,7 +432,7 @@
         document.querySelector('#startScreen .screen-sub').textContent =
           'A moving platform drops from above. Tap to cut — keep what overlaps. Just for fun, no code.';
       }
-      if (checkAlreadyWon()) {
+      if (checkCooldown()) {
         document.getElementById('startScreen').classList.add('hidden');
         document.getElementById('cooldownScreen').classList.remove('hidden');
       }
@@ -517,7 +526,7 @@
     function gameOver() {
       state = 'over';
       cancelAnimationFrame(raf);
-      // No cooldown on loss — unlimited retries in both modes
+      if (!FUN_MODE) localStorage.setItem('branflakes_won_at', Date.now().toString());
       document.getElementById('tapHint').style.opacity = '0';
       document.getElementById('finalScore').textContent = stack.length - 1;
       const overMsg = FUN_MODE
