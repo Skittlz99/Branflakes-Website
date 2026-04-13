@@ -527,7 +527,22 @@
           requestAnimationFrame(fall);
         } else {
           setTimeout(() => {
-            document.getElementById('gameOverScreen').classList.remove('hidden');
+            const el = document.getElementById('gameOverScreen');
+            if (FUN_MODE) {
+              el.querySelector('.screen-sub').textContent =
+                `You made it to block ${stack.length - 1}. Give it another go!`;
+              el.querySelector('a.btn-primary').style.display = 'none';
+              el.querySelector('p[style]').style.display = 'none';
+              // show try-again if not already added
+              if (!el.querySelector('.fun-retry')) {
+                const btn = document.createElement('button');
+                btn.className = 'btn-primary fun-retry';
+                btn.textContent = 'Try Again';
+                btn.onclick = restartGame;
+                el.insertBefore(btn, el.querySelector('a.btn-primary'));
+              }
+            }
+            el.classList.remove('hidden');
           }, 200);
         }
       }
