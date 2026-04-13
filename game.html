@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>The Stack — Branflakes</title>
+  <title>Branflakes | The Stack — </title>
+  <link rel="icon" type="image/png" href="brand_assets/Branflakes%20icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -387,10 +388,14 @@
     }
     window.applyCode = applyCode;
 
+    // ── Fun mode (no cooldown, no code reward) ────────────
+    const FUN_MODE = new URLSearchParams(window.location.search).get('fun') === '1';
+
     // ── Cooldown check (18 hours) ─────────────────────────
     const COOLDOWN_MS = 18 * 60 * 60 * 1000;
 
     function checkCooldown() {
+      if (FUN_MODE) return false;   // fun mode bypasses cooldown
       const lostAt = parseInt(localStorage.getItem('branflakes_lost_at') || '0', 10);
       if (!lostAt) return false;
       const elapsed = Date.now() - lostAt;
@@ -409,6 +414,12 @@
 
     // Check on load — show cooldown or start screen
     (function init() {
+      if (FUN_MODE) {
+        // Update start screen for fun mode
+        document.querySelector('#startScreen .screen-eyebrow').textContent = 'Branflakes × The Stack';
+        document.querySelector('#startScreen .screen-sub').textContent =
+          'A moving platform drops from above. Tap to cut — keep what overlaps. Just for fun.';
+      }
       if (checkCooldown()) {
         document.getElementById('startScreen').classList.add('hidden');
         document.getElementById('cooldownScreen').classList.remove('hidden');
@@ -479,7 +490,7 @@
     function win() {
       state = 'won';
       cancelAnimationFrame(raf);
-      localStorage.setItem('branflakes_code', 'STACK16');
+      if (!FUN_MODE) localStorage.setItem('branflakes_code', 'STACK16');
       document.getElementById('tapHint').style.opacity = '0';
       setTimeout(() => {
         document.getElementById('winScreen').classList.remove('hidden');
@@ -489,7 +500,7 @@
     function gameOver() {
       state = 'over';
       cancelAnimationFrame(raf);
-      localStorage.setItem('branflakes_lost_at', Date.now().toString());
+      if (!FUN_MODE) localStorage.setItem('branflakes_lost_at', Date.now().toString());
       document.getElementById('tapHint').style.opacity = '0';
       document.getElementById('finalScore').textContent = stack.length - 1;  // -1 for base
       // Animate mover falling
